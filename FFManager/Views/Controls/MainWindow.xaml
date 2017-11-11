@@ -24,17 +24,28 @@
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            
-            <StackPanel Orientation="Horizontal"
-                        Margin="5"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Grid.Row="0">
-                <Button Content="0" Style="{DynamicResource CaptionButtonStyleKey}" />
-                <Button Content="1" Style="{DynamicResource CaptionButtonStyleKey}" />
-                <Button Content="2" Style="{DynamicResource CaptionButtonStyleKey}" />
-                <Button Content="r" Style="{DynamicResource CaptionButtonStyleKey}" />
-            </StackPanel>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Width="20" Height="20"/>
+                <TextBlock Grid.Column="1" Margin="5" Foreground="Silver" FontSize="13">
+                    FFManager
+                </TextBlock>
+                <StackPanel Orientation="Horizontal"
+                            Margin="5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Grid.Column="2">
+                    <Button Content="0" Style="{DynamicResource CaptionButtonStyleKey}" />
+                    <Button Content="1" Style="{DynamicResource CaptionButtonStyleKey}" />
+                    <Button Content="2" Style="{DynamicResource CaptionButtonStyleKey}" />
+                    <Button Content="r" Style="{DynamicResource CaptionButtonStyleKey}" />
+                </StackPanel>
+            </Grid>
             
             <local:MainPanel Grid.Row="1"/>
             <local:LoginPanel Grid.Row="1" Visibility="Hidden"/>
