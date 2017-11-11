@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:FFManager.Views.Controls"
              xmlns:commons="clr-namespace:FFManager.Views.Controls.Commons"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="600">
+             d:DesignHeight="400" d:DesignWidth="600"
+             Background="{StaticResource ResourceKey=EobwLightBlue}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="10" MaxWidth="180"/>
@@ -14,7 +15,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="#10467d">
+        <StackPanel Grid.Column="0" Background="{StaticResource ResourceKey=EobwBasicNavy}">
             <StackPanel.Resources>
                 <Style TargetType="commons:PressableButton">
                     <Setter Property="Height" Value="40" />

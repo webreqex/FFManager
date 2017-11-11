@@ -1,0 +1,11 @@
+﻿<ResourceDictionary
+             x:Class="FFManager.Views.Controls.Styles.ColorDefinitions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <SolidColorBrush x:Key="EobwBasicNavy" Color="#063360"/>
+    <SolidColorBrush x:Key="EobwLightNavy" Color="#10467d"/>
+    <SolidColorBrush x:Key="EobwLightBlue" Color="#7AA8D6"/>
+    
+</ResourceDictionary>
