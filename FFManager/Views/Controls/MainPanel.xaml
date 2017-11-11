@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="FFManager.Views.Controls.MainPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FFManager.Views.Controls"
+             xmlns:commons="clr-namespace:FFManager.Views.Controls.Commons"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="10" MaxWidth="180"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Background="#10467d">
+            <StackPanel.Resources>
+                <Style TargetType="commons:PressableButton">
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="Forecolor" Value="White" />
+                </Style>
+            </StackPanel.Resources>
+
+            <Rectangle Height="20" />
+
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_AllAccounts}"/>
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_AccountsYouFollowing}"/>
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_AccountsYourFollower}"/>
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_UnrequitedFollow}"/>
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_UnrequitedFollower}"/>
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_ProtectedAccounts}"/>
+
+            <commons:MenuSplitBar Height="20" Margin="0, 10"/>
+
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_Logout}"/>
+        </StackPanel>
+
+        <Rectangle Grid.Column="1" Fill="#063360"/>
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Background="White">
+                <TextBlock FontSize="18" FontWeight="Bold" Margin="15, 10, 15, 5">Page Title</TextBlock>
+                <TextBlock FontSize="12" Margin="15, 5, 15, 15">Description</TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

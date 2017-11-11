@@ -1,0 +1,11 @@
+﻿<ResourceDictionary
+             x:Class="FFManager.ResourceDefinitions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        
+        <ResourceDictionary Source="StringResources/Resources.ja-jp.xaml"/>
+        <ResourceDictionary Source="Views/Controls/Styles/CaptionButtonStyle.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

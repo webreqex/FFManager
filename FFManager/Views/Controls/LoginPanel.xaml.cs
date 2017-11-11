@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FFManager
+namespace FFManager.Views.Controls
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// LoginPanel.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginPanel : UserControl
     {
-        public MainWindow()
+        public LoginPanel()
         {
             InitializeComponent();
         }

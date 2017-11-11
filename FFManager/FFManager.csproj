@@ -53,20 +53,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="StringResources\Resources.ja-jp.xaml.cs">
+      <DependentUpon>Resources.ja-jp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\Commons\MenuSplitBar.xaml.cs">
+      <DependentUpon>MenuSplitBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\Commons\PressableButton.xaml.cs">
+      <DependentUpon>PressableButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\LoginPanel.xaml.cs">
+      <DependentUpon>LoginPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\MainPanel.xaml.cs">
+      <DependentUpon>MainPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewModels\Bases\DelegateCommand.cs" />
+    <Compile Include="Views\ViewModels\Bases\InternalViewModelBase.cs" />
+    <Compile Include="Views\ViewModels\Bases\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Bases\RelationAccountBase.cs" />
+    <Compile Include="Models\Bases\ServiceAccountBase.cs" />
+    <Compile Include="Models\Bases\ServiceBase.cs" />
+    <Compile Include="Models\IRelationAccount.cs" />
+    <Compile Include="Models\IService.cs" />
+    <Compile Include="Models\IServiceAccount.cs" />
+    <Compile Include="Models\RelationAccountCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,6 +111,44 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ResourceDefinitions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StringResources\Resources.ja-jp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Commons\MenuSplitBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Commons\PressableButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\LoginPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\MainPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\Styles\CaptionButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Services\MastodonBase\" />
+    <Folder Include="Models\Services\Twitter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
