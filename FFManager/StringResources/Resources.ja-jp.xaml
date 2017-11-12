@@ -5,6 +5,7 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib">
     
     <!-- Common -->
+    <system:String x:Key="ApplicationName">FFManager beta</system:String>
     <system:String x:Key="Login">ログイン</system:String>
     <system:String x:Key="Logout">ログアウト</system:String>
 
