@@ -70,15 +70,11 @@ namespace FFManager.Views.ViewModels
             this.closeCommand = new DelegateCommand(param => this.CloseWindowFlag = true);
 
             this.PropertyChanged += MainWindowViewModel_PropertyChanged;
+            this.CurrentStateTextForTitle = null;
         }
 
         
         // 非公開メソッド
-
-        private void onLoadProc()
-        {
-            this.CurrentStateTextForTitle = null;
-        }
 
 
         // 非公開メソッド :: イベント

@@ -60,6 +60,7 @@ namespace FFManager.Views.ViewModels.Bases
         protected void SetValue(string propertyName, Object value)
         {
             this.propertyValues[propertyName] = value;
+            this.RaisePropertyChanged(propertyName);
         }
     }
 }
