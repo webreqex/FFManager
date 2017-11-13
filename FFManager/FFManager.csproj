@@ -61,6 +61,7 @@
       <DependentUpon>Resources.ja-jp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Behaviors\CloseWindowAttachedBehavior.cs" />
+    <Compile Include="Views\Behaviors\WindowStateAttachedBehavior.cs" />
     <Compile Include="Views\Controls\Commons\MenuSplitBar.xaml.cs">
       <DependentUpon>MenuSplitBar.xaml</DependentUpon>
     </Compile>

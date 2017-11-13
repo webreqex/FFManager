@@ -16,15 +16,38 @@
              Background="{StaticResource ResourceKey=EobwBasicNavy}"
              x:Name="MyWindow"
              Title="{Binding WindowTitle}"
-             bh:CloseWindowAttachedBehavior.Close="{Binding CloseWindowFlag}">
+             WindowState="{Binding WindowState}"
+             bh:CloseWindowAttachedBehavior.Close="{Binding CloseWindowFlag}"
+             bh:WindowStateAttachedBehavior.State="{Binding WindowState}">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <!--
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/CaptionButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        -->
+
+        <ResourceDictionary>
+            <Style x:Key="LocalCaptionButtonStyleAKey" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyleKey}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#efaf0000"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <WindowChrome.WindowChrome>
         <WindowChrome
             CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
             ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
     </WindowChrome.WindowChrome>
+    
     <Border BorderBrush="Gray" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
@@ -40,16 +63,26 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" Width="20" Height="20"/>
-                <TextBlock Grid.Column="1" Margin="5" Foreground="Silver" FontSize="13" Text="{Binding ElementName=MyWindow, Path=Title, Mode=OneWay}"/>
+                <TextBlock Grid.Column="1" Margin="5" Foreground="Silver" FontSize="13" Text="{Binding ElementName=MyWindow, Path=Title}"/>
                 <StackPanel Orientation="Horizontal"
                             Margin="5"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
                             Grid.Column="2">
-                    <Button Content="0" Style="{DynamicResource CaptionButtonStyleKey}" WindowChrome.IsHitTestVisibleInChrome="True"/>
-                    <Button Content="1" Style="{DynamicResource CaptionButtonStyleKey}" WindowChrome.IsHitTestVisibleInChrome="True"/>
-                    <Button Content="2" Style="{DynamicResource CaptionButtonStyleKey}" WindowChrome.IsHitTestVisibleInChrome="True"/>
-                    <Button Content="r" Style="{DynamicResource CaptionButtonStyleKey}" WindowChrome.IsHitTestVisibleInChrome="True" Command="{Binding CloseCommand}"/>
+                    <Button Content="0" Style="{StaticResource CaptionButtonStyleKey}" WindowChrome.IsHitTestVisibleInChrome="True" Command="{Binding MinimizeCommand}"/>
+                    <Button WindowChrome.IsHitTestVisibleInChrome="True" Command="{Binding SwitchWindowStateCommand}">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource ResourceKey=CaptionButtonStyleKey}" TargetType="Button">
+                                <Setter Property="Content" Value="1"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
+                                        <Setter Property="Content" Value="2"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Content="r" Style="{StaticResource LocalCaptionButtonStyleAKey}" WindowChrome.IsHitTestVisibleInChrome="True" Command="{Binding CloseCommand}"/>
                 </StackPanel>
             </Grid>
             
@@ -60,7 +93,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Grid.Row="2">
-                <Button Content="o" Style="{DynamicResource CaptionButtonStyleKey}" Cursor="SizeNWSE" WindowChrome.IsHitTestVisibleInChrome="True"/>
+                <Button Content="o" Style="{StaticResource CaptionButtonStyleKey}" Cursor="SizeNWSE" WindowChrome.IsHitTestVisibleInChrome="True"/>
             </StackPanel>
         </Grid>
     </Border>
