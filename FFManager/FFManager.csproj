@@ -77,6 +77,9 @@
     <Compile Include="Views\Controls\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\RegisteredAccountItem.xaml.cs">
+      <DependentUpon>RegisteredAccountItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewModels\Bases\DelegateCommand.cs" />
     <Compile Include="Views\ViewModels\Bases\InternalViewModelBase.cs" />
     <Compile Include="Views\ViewModels\Bases\ViewModelBase.cs" />
@@ -143,6 +146,10 @@
     <Page Include="Views\Controls\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\RegisteredAccountItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\Styles\CaptionButtonStyle.xaml">
       <SubType>Designer</SubType>

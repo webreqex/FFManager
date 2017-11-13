@@ -22,15 +22,24 @@ namespace FFManager.Views.ViewModels
         private DelegateCommand minimizeCommand;
 
 
-        // 公開プロパティ
+        // 公開プロパティ :: バインディングプロパティ
         
         /// <summary>
         /// 現在の状態をウィンドウタイトルとして表示する際、文字列を取得または設定します。
         /// </summary>
         public string CurrentStateTextForTitle
         {
-            get => this.GetValue<string>(nameof(this.CurrentStateTextForTitle));
-            set => this.SetValue(nameof(this.CurrentStateTextForTitle), value);
+            get => this.GetBindingValue<string>(nameof(this.CurrentStateTextForTitle));
+            set => this.SetBindingValue(nameof(this.CurrentStateTextForTitle), value);
+        }
+
+        /// <summary>
+        /// 現在の状態をステータスバーの文字列として表示する場合の値を取得または設定します。
+        /// </summary>
+        public string CurrentStateTextForStatusBar
+        {
+            get => this.GetBindingValue<string>(nameof(this.CurrentStateTextForStatusBar));
+            set => this.SetBindingValue(nameof(this.CurrentStateTextForStatusBar), value);
         }
 
         /// <summary>
@@ -38,8 +47,8 @@ namespace FFManager.Views.ViewModels
         /// </summary>
         public string WindowTitle
         {
-            get => this.GetValue<string>(nameof(this.WindowTitle));
-            private set => this.SetValue(nameof(this.WindowTitle), value);
+            get => this.GetBindingValue<string>(nameof(this.WindowTitle));
+            private set => this.SetBindingValue(nameof(this.WindowTitle), value);
         }
 
         /// <summary>
@@ -47,8 +56,8 @@ namespace FFManager.Views.ViewModels
         /// </summary>
         public bool CloseWindowFlag
         {
-            get => this.GetValue<bool>(nameof(this.CloseWindowFlag));
-            set => this.SetValue(nameof(this.CloseWindowFlag), value);
+            get => this.GetBindingValue<bool>(nameof(this.CloseWindowFlag));
+            set => this.SetBindingValue(nameof(this.CloseWindowFlag), value);
         }
 
         /// <summary>
@@ -56,9 +65,21 @@ namespace FFManager.Views.ViewModels
         /// </summary>
         public WindowState WindowState
         {
-            get => this.GetValue<WindowState>(nameof(this.WindowState));
-            set => this.SetValue(nameof(this.WindowState), value);
+            get => this.GetBindingValue<WindowState>(nameof(this.WindowState));
+            set => this.SetBindingValue(nameof(this.WindowState), value);
         }
+
+        /// <summary>
+        /// ログインパネルを表示するかどうかを示す値を取得または設定します。
+        /// </summary>
+        public bool LoginPanelIsShow
+        {
+            get => this.GetBindingValue<bool>(nameof(this.LoginPanelIsShow));
+            set => this.SetBindingValue(nameof(this.LoginPanelIsShow), value);
+        }
+
+
+        // 公開プロパティ :: コマンド
 
         /// <summary>
         /// 閉じる操作を行う際のCommandを取得します。
@@ -102,6 +123,8 @@ namespace FFManager.Views.ViewModels
 
             this.PropertyChanged += MainWindowViewModel_PropertyChanged;
             this.CurrentStateTextForTitle = null;
+            this.CurrentStateTextForStatusBar = "準備完了";
+            this.LoginPanelIsShow = true;
         }
 
         

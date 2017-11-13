@@ -21,14 +21,18 @@
         <StackPanel Grid.Column="1" Grid.Row="1" Background="White">
             <TextBlock Text="{StaticResource ResourceKey=lpn_LoginMessage}" Margin="10"/>
             <ListBox Width="300" MaxHeight="150">
-                <ListBoxItem Content="a"/>
-                <ListBoxItem Content="a"/>
-                <ListBoxItem Content="a"/>
-                <ListBoxItem Content="a"/>
-                <ListBoxItem Content="a"/>
-                <ListBoxItem Content="a"/>
-                <ListBoxItem Content="a"/>
-                <ListBoxItem Content="a"/>
+                <ListBoxItem>
+                    <local:RegisteredAccountItem AccountNameText="MainAccount" ServiceNameText="TestService"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <local:RegisteredAccountItem AccountNameText="MainAccount" ServiceNameText="TestService"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <local:RegisteredAccountItem AccountNameText="MainAccount" ServiceNameText="TestService"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <local:RegisteredAccountItem AccountNameText="MainAccount" ServiceNameText="TestService"/>
+                </ListBoxItem>
             </ListBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <StackPanel.Resources>

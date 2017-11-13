@@ -33,7 +33,7 @@ namespace FFManager.Views.ViewModels.Bases
         /// <typeparam name="T">プロパティの型</typeparam>
         /// <param name="propertyName">バインディングプロパティ名</param>
         /// <returns></returns>
-        protected T GetValue<T>(string propertyName)
+        protected T GetBindingValue<T>(string propertyName)
         {
             if (!this.propertyValues.ContainsKey(propertyName))
                 return default(T);
@@ -57,7 +57,7 @@ namespace FFManager.Views.ViewModels.Bases
         /// </summary>
         /// <param name="propertyName">バインディングプロパティ名</param>
         /// <param name="value"></param>
-        protected void SetValue(string propertyName, Object value)
+        protected void SetBindingValue(string propertyName, Object value)
         {
             this.propertyValues[propertyName] = value;
             this.RaisePropertyChanged(propertyName);
