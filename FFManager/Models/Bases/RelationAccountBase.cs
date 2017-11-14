@@ -16,6 +16,7 @@ namespace FFManager.Models.Bases
         private string name;
         private string id;
         private string internalId;
+        private string accountTypeId;
 
 
         // 公開プロパティ
@@ -45,11 +46,16 @@ namespace FFManager.Models.Bases
         }
 
 
-        // 公開プロパティ :: 明示的なインターフェイスの実装
+        // 公開プロパティ :: インターフェイスの明示的な実装
 
         IServiceAccount<TService> IRelationAccount<TService>.RelatedOwner
         {
             get => this.relatedOwner;
+        }
+
+        string IAccount.AccountTypeId
+        {
+            get => this.accountTypeId;
         }
         
         
@@ -62,12 +68,14 @@ namespace FFManager.Models.Bases
         /// <param name="name"></param>
         /// <param name="id"></param>
         /// <param name="internalId"></param>
-        public RelationAccountBase(IServiceAccount<TService> relatedOwner, string name, string id, string internalId)
+        /// <param name="accountTypeId"></param>
+        public RelationAccountBase(IServiceAccount<TService> relatedOwner, string name, string id, string internalId, string accountTypeId)
         {
             this.relatedOwner = relatedOwner;
             this.name = name;
             this.id = id;
             this.internalId = internalId;
+            this.accountTypeId = accountTypeId;
         }
     }
 }

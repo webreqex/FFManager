@@ -46,6 +46,14 @@ namespace FFManager.Models.Bases
         }
 
 
+        // 公開プロパティ :: インターフェイスの明示的な実装
+        
+        string IAccount.AccountTypeId
+        {
+            get => this.accountTypeId;
+        }
+
+
         // コンストラクタ
 
         /// <summary>
@@ -54,11 +62,13 @@ namespace FFManager.Models.Bases
         /// <param name="name">アカウント名</param>
         /// <param name="id">ID名</param>
         /// <param name="internalId">内部ID。存在しない場合は、nullを指定します。</param>
+        /// <param name="accountTypeId">アカウントの実装タイプを判定するための文字列</param>
         public ServiceAccountBase(string name, string id, string internalId, string accountTypeId)
         {
             this.name = name;
             this.id = id;
             this.internalId = internalId;
+            this.accountTypeId = accountTypeId;
         }
 
 
