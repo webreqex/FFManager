@@ -101,7 +101,8 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Foreground="White" Text="{Binding CurrentStateTextForStatusBar}" Margin="2"/>
-                <Button Content="o" Style="{StaticResource CaptionButtonStyleKey}" Cursor="SizeNWSE" WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="1"/>
+                <!-- Cursor="SizeNWSE" -->
+                <Button Content="o" Style="{StaticResource CaptionButtonStyleKey}" WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="1"/>
             </Grid>
         </Grid>
     </Border>

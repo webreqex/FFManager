@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Column="1" Grid.Row="1" Background="White">
             <TextBlock Text="{StaticResource ResourceKey=lpn_LoginMessage}" Margin="10"/>
-            <ListBox Width="300" MaxHeight="150">
+            <ListBox Width="300" MaxHeight="150" BorderThickness="0">
                 <ListBoxItem>
                     <local:RegisteredAccountItem AccountNameText="MainAccount" ServiceNameText="TestService"/>
                 </ListBoxItem>
@@ -36,7 +36,7 @@
             </ListBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <StackPanel.Resources>
-                    <Style TargetType="Button">
+                    <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=ModernButtonStyleKey}">
                         <Setter Property="Margin" Value="10"/>
                     </Style>
                 </StackPanel.Resources>

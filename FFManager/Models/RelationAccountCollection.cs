@@ -8,7 +8,7 @@ using System.Text;
 namespace FFManager.Models
 {
     /// <summary>
-    /// 
+    /// 現在のアカウントとフォロー／フォロワー／プロテクト関係にある他者のアカウントのコレクションを表します。
     /// </summary>
     /// <typeparam name="TService"></typeparam>
     public class RelationAccountCollection<TService>

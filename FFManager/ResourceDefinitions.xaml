@@ -7,6 +7,7 @@
         <ResourceDictionary Source="StringResources/Resources.ja-jp.xaml"/>
         <ResourceDictionary Source="Views/Controls/Styles/CaptionButtonStyle.xaml"/>
         <ResourceDictionary Source="Views/Controls/Styles/ColorDefinitions.xaml"/>
+        <ResourceDictionary Source="Views/Controls/Styles/ModernButtonStyle.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
