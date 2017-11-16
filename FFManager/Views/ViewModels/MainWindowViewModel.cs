@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
+using LocusCommon.Windows.ViewModels;
+
 using FFManager.Controller;
-using FFManager.Views.ViewModels.Bases;
 
 namespace FFManager.Views.ViewModels
 {

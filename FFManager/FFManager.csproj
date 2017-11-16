@@ -99,9 +99,9 @@
     <Compile Include="Views\Controls\RegisteredAccountItem.xaml.cs">
       <DependentUpon>RegisteredAccountItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewModels\Bases\DelegateCommand.cs" />
-    <Compile Include="Views\ViewModels\Bases\InternalViewModelBase.cs" />
-    <Compile Include="Views\ViewModels\Bases\ViewModelBase.cs" />
+    <None Include="Views\ViewModels\Bases\DelegateCommand.cs" />
+    <None Include="Views\ViewModels\Bases\InternalViewModelBase.cs" />
+    <None Include="Views\ViewModels\Bases\ViewModelBase.cs" />
     <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +191,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocusCommon\LocusCommon.Net45\LocusCommon.Net45.csproj">
+      <Project>{a2a8e19a-9dc6-43d6-8bcc-0d4a2ab0c7be}</Project>
+      <Name>LocusCommon.Net45</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\ViewModels\Bases\00_Notfication!!.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
