@@ -1,0 +1,3 @@
+[submodule "LocusCommon"]
+	path = LocusCommon
+	url = https://github.com/a32kita/LocusCommon.git
