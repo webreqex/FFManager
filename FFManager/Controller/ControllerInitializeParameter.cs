@@ -23,7 +23,8 @@ namespace FFManager.Controller
 
         public static self CreateFrom(string path)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return null;
         }
     }
 }
