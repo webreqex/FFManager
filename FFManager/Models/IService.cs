@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using FFManager.Models.Elements;
+
 namespace FFManager.Models
 {
     /// <summary>
@@ -31,7 +33,8 @@ namespace FFManager.Models
         /// アカウントを認証を取得します。
         /// </summary>
         /// <returns>認証に失敗、あるいは中断した場合は、Taskの結果としてnullを返します。</returns>
+        /// <param name="parameters"></param>
         /// <remarks>このメソッドは、明示的なインターフェイスの実装により定義され、また、同名のメソッドで詳細な型が確定した適切な戻り値を返すメソッドを別途定義されることが理想です。</remarks>
-        Task<IServiceAccount<IService>> AuthorizeAsync();
+        Task<IServiceAccount<IService>> AuthorizeAsync(AuthorizeParameter parameters);
     }
 }

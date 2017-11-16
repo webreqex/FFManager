@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using FFManager.Models.Elements;
+
 namespace FFManager.Models.Bases
 {
     /// <summary>
@@ -57,8 +59,9 @@ namespace FFManager.Models.Bases
         /// <summary>
         /// アカウントを認証を取得する処理を実装します。
         /// </summary>
+        /// <param name="parameters"></param>
         /// <returns>認証に失敗、あるいは中断した場合は、Taskの結果としてnullを返します。</returns>
-        protected abstract Task<IServiceAccount<IService>> OnAuthorizeAsync();
+        protected abstract Task<IServiceAccount<IService>> OnAuthorizeAsync(AuthorizeParameter parameters);
 
 
         // 公開メソッド
@@ -66,9 +69,9 @@ namespace FFManager.Models.Bases
 
         // 公開メソッド :: 明示的なインターフェイスの実装
 
-        Task<IServiceAccount<IService>> IService.AuthorizeAsync()
+        Task<IServiceAccount<IService>> IService.AuthorizeAsync(AuthorizeParameter parameters)
         {
-            return this.OnAuthorizeAsync();
+            return this.OnAuthorizeAsync(parameters);
         }
     }
 }

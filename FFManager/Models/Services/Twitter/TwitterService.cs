@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CoreTweet;
 
 using FFManager.Models.Bases;
+using FFManager.Models.Elements;
 
 namespace FFManager.Models.Services.Twitter
 {
@@ -37,7 +38,12 @@ namespace FFManager.Models.Services.Twitter
             this.consumerSecret = consumerSecret;
         }
 
-        
-        
+
+        // 限定公開メソッド
+
+        protected override Task<IServiceAccount<IService>> OnAuthorizeAsync(AuthorizeParameter parameters)
+        {
+            return null;
+        }
     }
 }

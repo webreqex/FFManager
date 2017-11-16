@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
+using FFManager.Controller;
 using FFManager.Views.ViewModels.Bases;
 
 namespace FFManager.Views.ViewModels
@@ -20,6 +21,8 @@ namespace FFManager.Views.ViewModels
         private DelegateCommand closeCommand;
         private DelegateCommand switchWindowStateCommand;
         private DelegateCommand minimizeCommand;
+
+        private MainController controller;
 
 
         // 公開プロパティ :: バインディングプロパティ
@@ -125,6 +128,8 @@ namespace FFManager.Views.ViewModels
             this.CurrentStateTextForTitle = null;
             this.CurrentStateTextForStatusBar = "準備完了";
             this.LoginPanelIsShow = true;
+
+            this.controller = new MainController(ControllerInitializeParameter.CreateFrom(""));
         }
 
         

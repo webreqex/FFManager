@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FFManager.Models.Elements
+namespace FFManager.Controller
 {
-    public class AuthorizeParameter
+    public enum ApplicationState
     {
-        // 非公開フィールド
-        
+        ChoiceLoginAccount,
+
+
     }
 }
