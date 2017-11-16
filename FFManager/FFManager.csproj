@@ -71,6 +71,8 @@
     <Compile Include="Models\Extensions\AccountExtension.cs" />
     <Compile Include="Models\IAccount.cs" />
     <Compile Include="Models\RelationType.cs" />
+    <Compile Include="Models\Services\Tests\ModelTestService.cs" />
+    <Compile Include="Models\Services\Tests\ModelTestServiceAccount.cs" />
     <Compile Include="Models\Services\Twitter\TwitterRelationAccount.cs" />
     <Compile Include="Models\Services\Twitter\TwitterService.cs" />
     <Compile Include="Models\Services\Twitter\TwitterServiceAccount.cs" />

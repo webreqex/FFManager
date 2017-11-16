@@ -17,6 +17,7 @@ namespace FFManager.Controller
     {
         // 非公開フィールド
         private ApplicationState state;
+        private ICollection<IService> services;
         private ICollection<IServiceAccount<IService>> serviceAccounts;
         private int currentAccountIndex;
 
@@ -31,6 +32,16 @@ namespace FFManager.Controller
         {
             get => this.state;
             set => this.state = value;
+        }
+
+        /// <summary>
+        /// 利用可能なサービスの一覧を示すコレクションを取得または，設定します．
+        /// 最低限１つ以上指定されている必要があります．
+        /// </summary>
+        public ICollection<IService> Services
+        {
+            get => this.services;
+            set => this.services = value;
         }
 
         /// <summary>
@@ -62,6 +73,7 @@ namespace FFManager.Controller
         public ControllerInitializeParameter()
         {
             this.state = ApplicationState.ChoiceLoginAccount;
+            this.services = new IService[0];
             this.serviceAccounts = new IServiceAccount<IService>[0];
             this.currentAccountIndex = -1;
         }

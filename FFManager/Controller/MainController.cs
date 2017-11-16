@@ -16,6 +16,7 @@ namespace FFManager.Controller
     {
         // 非公開フィールド
         private ApplicationState state;
+        private List<IService> activeServices;
         private List<IServiceAccount<IService>> activeAccounts;
         private int currentAccountIndex;
 
@@ -31,6 +32,14 @@ namespace FFManager.Controller
         {
             get => this.state;
             set => this.state = value;
+        }
+
+        /// <summary>
+        /// 利用可能なサービスのコレクションを取得します．
+        /// </summary>
+        public IReadOnlyCollection<IService> ActiveServices
+        {
+            get => this.activeServices;
         }
 
         /// <summary>

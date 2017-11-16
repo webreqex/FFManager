@@ -129,7 +129,13 @@ namespace FFManager.Views.ViewModels
             this.CurrentStateTextForStatusBar = "準備完了";
             this.LoginPanelIsShow = true;
 
-            this.controller = new MainController(ControllerInitializeParameter.CreateFrom(""));
+            this.controller = new MainController(new ControllerInitializeParameter()
+            {
+                Services = new Models.IService[]
+                {
+                    new Models.Services.Tests.ModelTestService("test1")
+                },
+            });
         }
 
         
