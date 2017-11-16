@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +19,8 @@ namespace FFManager.Controller
     {
         // 非公開フィールド
         private ApplicationState state;
-        private List<IService> activeServices;
-        private List<IServiceAccount<IService>> activeAccounts;
+        private ObservableCollection<IService> activeServices;
+        private ObservableCollection<IServiceAccount<IService>> activeAccounts;
         private int currentAccountIndex;
 
         private EventHandler<ChangeStateEventArgs> changeState;
@@ -82,6 +85,15 @@ namespace FFManager.Controller
             remove => this.changeState -= value;
         }
 
+        /// <summary>
+        /// アカウントの一覧が更新された際に発生します．
+        /// </summary>
+        public event NotifyCollectionChangedEventHandler AccountsChanged
+        {
+            add => this.activeAccounts.CollectionChanged += value;
+            remove => this.activeAccounts.CollectionChanged -= value;
+        }
+
 
         // コンストラクタ
 
@@ -92,7 +104,7 @@ namespace FFManager.Controller
         public MainController(ControllerInitializeParameter parameters)
         {
             this.state = parameters.State;
-            this.activeAccounts = parameters.ServiceAccounts.ToList();
+            this.activeAccounts = new ObservableCollection<IServiceAccount<IService>>(parameters.ServiceAccounts);
             this.currentAccountIndex = parameters.CurrentAccountIndex;
         }
 
