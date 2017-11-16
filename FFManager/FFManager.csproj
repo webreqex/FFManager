@@ -99,9 +99,6 @@
     <Compile Include="Views\Controls\RegisteredAccountItem.xaml.cs">
       <DependentUpon>RegisteredAccountItem.xaml</DependentUpon>
     </Compile>
-    <None Include="Views\ViewModels\Bases\DelegateCommand.cs" />
-    <None Include="Views\ViewModels\Bases\InternalViewModelBase.cs" />
-    <None Include="Views\ViewModels\Bases\ViewModelBase.cs" />
     <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
