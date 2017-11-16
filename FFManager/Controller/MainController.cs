@@ -16,7 +16,8 @@ namespace FFManager.Controller
     {
         // 非公開フィールド
         private ApplicationState state;
-        private IServiceAccount<IService> currentAccount;
+        private List<IServiceAccount<IService>> activeAccounts;
+        private int currentAccountIndex;
 
         private EventHandler<ChangeStateEventArgs> changeState;
 
@@ -29,15 +30,35 @@ namespace FFManager.Controller
         public ApplicationState State
         {
             get => this.state;
+            set => this.state = value;
         }
 
         /// <summary>
-        /// 現在利用中のアカウントを取得します．
-        /// ログインしていない場合は，nullを示します．
+        /// 現在利用可能な ServiceAccount のコレクションを取得します．
+        /// </summary>
+        public ICollection<IServiceAccount<IService>> ActiveAccounts
+        {
+            get => this.activeAccounts;
+        }
+
+        /// <summary>
+        /// 現在利用中のアカウントのインデックス番号を取得します．
+        /// 現在ログイン済みでない場合は，-1を示します．
+        /// </summary>
+        public int CurrentAccountIndex
+        {
+            get => this.currentAccountIndex;
+        }
+
+        /// <summary>
+        /// 現在利用中のアカウントを取得または，設定します．
+        /// ActiveAccountsの中に登録済みでないアカウントを設定すると，例外が発生します．
+        /// ログイン済みでない場合は，nullを返します．
         /// </summary>
         public IServiceAccount<IService> CurrentAccount
         {
-            get => this.currentAccount;
+            get => this.currentAccountIndex == -1 ? null : this.activeAccounts[this.currentAccountIndex];
+            set => this.currentAccountIndex = value == null ? -1 : this.activeAccounts.IndexOf(value);
         }
 
 
@@ -61,8 +82,9 @@ namespace FFManager.Controller
         /// <param name="parameters"></param>
         public MainController(ControllerInitializeParameter parameters)
         {
-            this.currentAccount = null;
-            this.state = ApplicationState.ChoiceLoginAccount;
+            this.state = parameters.State;
+            this.activeAccounts = parameters.ServiceAccounts.ToList();
+            this.currentAccountIndex = parameters.CurrentAccountIndex;
         }
 
 
