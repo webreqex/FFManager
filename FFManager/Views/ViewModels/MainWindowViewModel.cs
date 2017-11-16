@@ -15,7 +15,7 @@ namespace FFManager.Views.ViewModels
     /// <summary>
     /// MainWindowのビューモデルを定義します。
     /// </summary>
-    public class MainWindowViewModel : InternalViewModelBase
+    public class MainWindowViewModel : ExtendedViewModelBase
     {
         // 非公開フィールド
         private string applicationName;
@@ -24,6 +24,7 @@ namespace FFManager.Views.ViewModels
         private DelegateCommand minimizeCommand;
 
         private MainController controller;
+        private LoginPanelViewModel loginPanelViewModel;
 
 
         // 公開プロパティ :: バインディングプロパティ
@@ -82,6 +83,15 @@ namespace FFManager.Views.ViewModels
             set => this.SetBindingValue(nameof(this.LoginPanelIsShow), value);
         }
 
+        /// <summary>
+        /// この ViewModel の管理下に置かれるLoginPanelのViewModelインスタンスを取得します。
+        /// このプロパティの変更は、ビューに通知されません。
+        /// </summary>
+        public LoginPanelViewModel LoginPanelViewModel
+        {
+            get => this.loginPanelViewModel;
+        }
+
 
         // 公開プロパティ :: コマンド
 
@@ -137,6 +147,9 @@ namespace FFManager.Views.ViewModels
                     new Models.Services.Tests.ModelTestService("test1")
                 },
             });
+
+            this.loginPanelViewModel = new LoginPanelViewModel();
+            this.loginPanelViewModel.ParentWindowViewModel = this;
         }
 
         

@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FFManager.Views.Controls"
+             xmlns:vm="clr-namespace:FFManager.Views.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400">
+    <UserControl.DataContext>
+        <!-- 実行時にMainWindow所属のインスタンスに置き換え -->
+        <vm:LoginPanelViewModel/>
+    </UserControl.DataContext>
     <Grid Background="#5f000000">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -40,7 +45,7 @@
                         <Setter Property="Margin" Value="10"/>
                     </Style>
                 </StackPanel.Resources>
-                <Button Content="{StaticResource ResourceKey=lpn_CancelButton}"/>
+                <Button Content="{StaticResource ResourceKey=lpn_CancelButton}" Command="{Binding CancelButtonClickCommand}"/>
                 <Button Content="{StaticResource ResourceKey=lpn_AuthorizeNewButton}"/>
                 <Button Content="{StaticResource ResourceKey=lpn_LoginMessage}"/>
             </StackPanel>

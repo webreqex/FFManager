@@ -80,7 +80,7 @@
             </Grid>
             
             <local:MainPanel Grid.Row="1"/>
-            <local:LoginPanel Grid.Row="1">
+            <local:LoginPanel DataContext="{Binding LoginPanelViewModel}" Grid.Row="1">
                 <local:LoginPanel.Resources>
                     <Style TargetType="local:LoginPanel">
                         <Setter Property="Visibility" Value="Hidden"/>
