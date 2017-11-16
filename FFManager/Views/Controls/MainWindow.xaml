@@ -21,7 +21,7 @@
              bh:CloseWindowAttachedBehavior.Close="{Binding CloseWindowFlag}"
              bh:WindowStateAttachedBehavior.State="{Binding WindowState}">
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel x:Name="WindowViewModel"/>
     </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
@@ -33,6 +33,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <vm:LoginPanelViewModel x:Key="LoginPanelVMKey"/>
         </ResourceDictionary>
     </Window.Resources>
     <WindowChrome.WindowChrome>
@@ -80,18 +81,21 @@
             </Grid>
             
             <local:MainPanel Grid.Row="1"/>
-            <local:LoginPanel DataContext="{Binding LoginPanelViewModel}" Grid.Row="1">
-                <local:LoginPanel.Resources>
-                    <Style TargetType="local:LoginPanel">
+            
+            <Grid Grid.Row="1">
+                <!-- LoginPanelが別途でビューモデルを持っているため、LoginPanelからWindowのVMへのバインディングができない -->
+                <Grid.Style>
+                    <Style TargetType="Grid">
                         <Setter Property="Visibility" Value="Hidden"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding LoginPanelIsShow}" Value="True">
+                            <DataTrigger Binding="{Binding Path=LoginPanelIsShow}" Value="True">
                                 <Setter Property="Visibility" Value="Visible"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </local:LoginPanel.Resources>
-            </local:LoginPanel>
+                </Grid.Style>
+                <local:LoginPanel DataContext="{StaticResource LoginPanelVMKey}"/>
+            </Grid>
 
             <Grid
                 VerticalAlignment="Bottom"

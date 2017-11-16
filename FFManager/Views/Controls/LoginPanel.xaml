@@ -7,10 +7,11 @@
              xmlns:vm="clr-namespace:FFManager.Views.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400">
+    <!--
     <UserControl.DataContext>
-        <!-- 実行時にMainWindow所属のインスタンスに置き換え -->
         <vm:LoginPanelViewModel/>
     </UserControl.DataContext>
+    -->
     <Grid Background="#5f000000">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
