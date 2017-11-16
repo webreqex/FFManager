@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Elements\AuthorizeParameter.cs" />
     <Compile Include="Models\Extensions\AccountExtension.cs" />
     <Compile Include="Models\IAccount.cs" />
     <Compile Include="Models\RelationType.cs" />
