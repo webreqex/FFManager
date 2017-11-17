@@ -33,7 +33,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <vm:LoginPanelViewModel x:Key="LoginPanelVMKey"/>
+            <vm:LoginPanelViewModel x:Key="LoginPanelVMKey" x:Name="LoginPanelViewModel"/>
         </ResourceDictionary>
     </Window.Resources>
     <WindowChrome.WindowChrome>
