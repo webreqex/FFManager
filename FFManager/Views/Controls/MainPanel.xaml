@@ -5,8 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FFManager.Views.Controls"
              xmlns:commons="clr-namespace:FFManager.Views.Controls.Commons"
+             xmlns:vm="clr-namespace:FFManager.Views.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600"
+             d:DataContext="{d:DesignInstance {x:Type vm:MainPanelViewModel}}"
              Background="{StaticResource ResourceKey=EobwLightBlue}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -34,7 +36,7 @@
 
             <commons:MenuSplitBar Height="20" Margin="0, 10"/>
 
-            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_Logout}"/>
+            <commons:PressableButton Text="{StaticResource ResourceKey=mpl_Logout}" Command="{Binding LogoutButtonCommand}"/>
         </StackPanel>
 
         <Rectangle Grid.Column="1" Fill="#063360"/>

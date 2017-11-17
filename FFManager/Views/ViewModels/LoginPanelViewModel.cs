@@ -15,24 +15,19 @@ namespace FFManager.Views.ViewModels
     public class LoginPanelViewModel : ExtendedViewModelBase
     {
         // 非公開フィールド
-        private MainWindowViewModel parentWindowViewModel;
-
-        private EventHandler<CommandEventArgs> cancelButtonClick;
-
         private DelegateCommand cancelButtonCommand;
+        private EventHandler<CommandEventArgs> cancelButtonClick;
 
 
         // 公開プロパティ
 
         /// <summary>
         /// 親ウィンドウにあたるMainWindowのビューモデルが存在している場合は、取得または設定します。
-        /// 存在しない場合は、nullを示します。
-        /// このプロパティは Observable ではありません。
         /// </summary>
         public MainWindowViewModel ParentWindowViewModel
         {
-            get => this.parentWindowViewModel;
-            set => this.parentWindowViewModel = value;
+            get => this.GetBindingValue<MainWindowViewModel>(nameof(this.ParentWindowViewModel));
+            set => this.SetBindingValue(nameof(this.ParentWindowViewModel), value);
         }
 
 
@@ -41,7 +36,7 @@ namespace FFManager.Views.ViewModels
         /// <summary>
         /// キャンセルボタンがクリックされた際のコマンドを取得します。
         /// </summary>
-        public ICommand CancelButtonClickCommand
+        public ICommand CancelButtonCommand
         {
             get => this.cancelButtonCommand;
         }
@@ -66,9 +61,8 @@ namespace FFManager.Views.ViewModels
         /// </summary>
         public LoginPanelViewModel()
         {
-            this.parentWindowViewModel = null;
-
-            this.cancelButtonCommand = new DelegateCommand(param => this.cancelButtonClick?.Invoke(this, new CommandEventArgs()));
+            this.cancelButtonCommand =
+                new DelegateCommand(param => this.cancelButtonClick?.Invoke(this, new CommandEventArgs()));
         }
 
 

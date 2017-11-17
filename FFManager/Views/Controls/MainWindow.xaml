@@ -30,11 +30,13 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+
+            <vm:MainPanelViewModel x:Key="MainPanelVMKey"/>
             <vm:LoginPanelViewModel x:Key="LoginPanelVMKey"/>
         </ResourceDictionary>
     </Window.Resources>
     <Window.DataContext>
-        <vm:MainWindowViewModel LoginPanelViewModel="{StaticResource LoginPanelVMKey}"/>
+        <vm:MainWindowViewModel LoginPanelViewModel="{StaticResource LoginPanelVMKey}" MainPanelViewModel="{StaticResource MainPanelVMKey}"/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome
@@ -80,7 +82,7 @@
                 </StackPanel>
             </Grid>
             
-            <local:MainPanel Grid.Row="1"/>
+            <local:MainPanel Grid.Row="1" DataContext="{StaticResource MainPanelVMKey}"/>
             
             <Grid Grid.Row="1">
                 <!-- LoginPanelが別途でビューモデルを持っているため、LoginPanelからWindowのVMへのバインディングができない -->

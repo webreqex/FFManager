@@ -6,12 +6,8 @@
              xmlns:local="clr-namespace:FFManager.Views.Controls"
              xmlns:vm="clr-namespace:FFManager.Views.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="400">
-    <!--
-    <UserControl.DataContext>
-        <vm:LoginPanelViewModel/>
-    </UserControl.DataContext>
-    -->
+             d:DesignHeight="250" d:DesignWidth="400"
+             d:DataContext="{d:DesignInstance {x:Type vm:LoginPanelViewModel}}">
     <Grid Background="#5f000000">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -46,7 +42,7 @@
                         <Setter Property="Margin" Value="10"/>
                     </Style>
                 </StackPanel.Resources>
-                <Button Content="{StaticResource ResourceKey=lpn_CancelButton}" Command="{Binding CancelButtonClickCommand}"/>
+                <Button Content="{StaticResource ResourceKey=lpn_CancelButton}" Command="{Binding CancelButtonCommand}"/>
                 <Button Content="{StaticResource ResourceKey=lpn_AuthorizeNewButton}"/>
                 <Button Content="{StaticResource ResourceKey=lpn_LoginMessage}"/>
             </StackPanel>

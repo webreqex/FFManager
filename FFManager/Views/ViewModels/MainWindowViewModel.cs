@@ -83,8 +83,16 @@ namespace FFManager.Views.ViewModels
         }
 
         /// <summary>
-        /// この ViewModel の管理下に置かれるLoginPanelのViewModelインスタンスを取得します。
-        /// このプロパティの変更は、ビューに通知されません。
+        /// この ViewModel の管理下に置かれているMainPanelのViewModelのインスタンスを取得または設定します。
+        /// </summary>
+        public MainPanelViewModel MainPanelViewModel
+        {
+            get => this.GetBindingValue<MainPanelViewModel>(nameof(this.MainPanelViewModel));
+            set => this.SetBindingValue(nameof(this.MainPanelViewModel), value);
+        }
+
+        /// <summary>
+        /// この ViewModel の管理下に置かれるLoginPanelのViewModelインスタンスを取得または設定します。
         /// </summary>
         public LoginPanelViewModel LoginPanelViewModel
         {
@@ -183,7 +191,15 @@ namespace FFManager.Views.ViewModels
                         newTitle = this.applicationName + " - " + this.CurrentStateTextForTitle;
                     this.WindowTitle = newTitle;
                     break;
+                case nameof(this.MainPanelViewModel):
+                    this.MainPanelViewModel.ParentWindowViewModel = this;
+                    this.MainPanelViewModel.LogoutButtonClick += delegate
+                    {
+                        this.LoginPanelIsShow = true;
+                    };
+                    break;
                 case nameof(this.LoginPanelViewModel):
+                    this.LoginPanelViewModel.ParentWindowViewModel = this;
                     this.LoginPanelViewModel.CancelButtonClick += delegate
                     {
                         this.LoginPanelIsShow = false;
