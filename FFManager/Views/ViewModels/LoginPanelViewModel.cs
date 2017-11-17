@@ -47,6 +47,18 @@ namespace FFManager.Views.ViewModels
         }
 
 
+        // 公開イベント
+
+        /// <summary>
+        /// キャンセルボタンがクリックされたときに発生します。
+        /// </summary>
+        public event EventHandler<CommandEventArgs> CancelButtonClick
+        {
+            add => this.cancelButtonClick += value;
+            remove => this.cancelButtonClick -= value;
+        }
+
+
         // コンストラクタ
 
         /// <summary>

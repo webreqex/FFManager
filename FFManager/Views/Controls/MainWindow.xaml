@@ -20,9 +20,6 @@
              WindowState="{Binding WindowState}"
              bh:CloseWindowAttachedBehavior.Close="{Binding CloseWindowFlag}"
              bh:WindowStateAttachedBehavior.State="{Binding WindowState}">
-    <Window.DataContext>
-        <vm:MainWindowViewModel x:Name="WindowViewModel"/>
-    </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
             <Style x:Key="LocalCaptionButtonStyleAKey" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyleKey}">
@@ -33,9 +30,12 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <vm:LoginPanelViewModel x:Key="LoginPanelVMKey" x:Name="LoginPanelViewModel"/>
+            <vm:LoginPanelViewModel x:Key="LoginPanelVMKey"/>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.DataContext>
+        <vm:MainWindowViewModel LoginPanelViewModel="{StaticResource LoginPanelVMKey}"/>
+    </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome
             CaptionHeight="{x:Static SystemParameters.CaptionHeight}"

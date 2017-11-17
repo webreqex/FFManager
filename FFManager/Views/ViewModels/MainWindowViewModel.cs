@@ -24,7 +24,6 @@ namespace FFManager.Views.ViewModels
         private DelegateCommand minimizeCommand;
 
         private MainController controller;
-        private LoginPanelViewModel loginPanelViewModel;
 
 
         // 公開プロパティ :: バインディングプロパティ
@@ -89,7 +88,8 @@ namespace FFManager.Views.ViewModels
         /// </summary>
         public LoginPanelViewModel LoginPanelViewModel
         {
-            get => this.loginPanelViewModel;
+            get => this.GetBindingValue<LoginPanelViewModel>(nameof(this.LoginPanelViewModel));
+            set => this.SetBindingValue(nameof(this.LoginPanelViewModel), value);
         }
 
 
@@ -147,9 +147,6 @@ namespace FFManager.Views.ViewModels
                     new Models.Services.Tests.ModelTestService("test1")
                 },
             });
-
-            this.loginPanelViewModel = new LoginPanelViewModel();
-            this.loginPanelViewModel.ParentWindowViewModel = this;
         }
 
         
@@ -185,6 +182,12 @@ namespace FFManager.Views.ViewModels
                     if (this.CurrentStateTextForTitle != null && this.CurrentStateTextForTitle != "")
                         newTitle = this.applicationName + " - " + this.CurrentStateTextForTitle;
                     this.WindowTitle = newTitle;
+                    break;
+                case nameof(this.LoginPanelViewModel):
+                    this.LoginPanelViewModel.CancelButtonClick += delegate
+                    {
+                        this.LoginPanelIsShow = false;
+                    };
                     break;
             }
         }

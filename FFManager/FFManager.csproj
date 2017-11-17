@@ -100,6 +100,7 @@
       <DependentUpon>RegisteredAccountItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewModels\LoginPanelViewModel.cs" />
+    <Compile Include="Views\ViewModels\MainPanelViewModel.cs" />
     <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

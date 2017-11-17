@@ -34,5 +34,5 @@
     <system:String x:Key="mpl_ProtectedAccounts">プロテクト中のアカウント</system:String>
     <system:String x:Key="mpl_ProtectedAccounts_Description">重要なアカウントとしてあなたがプロテクトマークをつけたユーザー</system:String>
 
-    <system:String x:Key="mpl_Logout">ログアウト</system:String>
+    <system:String x:Key="mpl_Logout">別のアカウント</system:String>
 </ResourceDictionary>

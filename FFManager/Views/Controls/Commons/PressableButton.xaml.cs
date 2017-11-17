@@ -19,7 +19,7 @@ namespace FFManager.Views.Controls.Commons
     /// <summary>
     /// PressableButton.xaml の相互作用ロジック
     /// </summary>
-    public partial class PressableButton : UserControl
+    public partial class PressableButton : UserControl, ICommandSource
     {
         // 依存関係プロパティ
         
@@ -36,15 +36,13 @@ namespace FFManager.Views.Controls.Commons
             }));
 
 
-
-
+        
         public Brush Forecolor
         {
             get { return (Brush)GetValue(ForecolorProperty); }
             set { SetValue(ForecolorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Forecolor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ForecolorProperty =
             DependencyProperty.Register("Forecolor", typeof(Brush), typeof(self), new PropertyMetadata(Brushes.Black, (d, e) =>
             {
@@ -52,6 +50,39 @@ namespace FFManager.Views.Controls.Commons
             }));
 
 
+        
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register("Command", typeof(ICommand), typeof(self), new PropertyMetadata(null));
+
+
+        
+        public Object CommandParameter
+        {
+            get { return (Object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register("CommandParameter", typeof(Object), typeof(self), new PropertyMetadata(null));
+
+        
+
+        public IInputElement CommandTarget
+        {
+            get { return (IInputElement)GetValue(CommandTargetProperty); }
+            set { SetValue(CommandTargetProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CommandTarget.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandTargetProperty =
+            DependencyProperty.Register("CommandTarget", typeof(IInputElement), typeof(self), new PropertyMetadata(null));
+        
 
 
         // コンストラクタ
@@ -65,5 +96,21 @@ namespace FFManager.Views.Controls.Commons
         }
 
 
+        // 限定公開メソッド
+
+        protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonUp(e);
+
+            var command = this.Command;
+            var parameter = this.CommandParameter;
+            var target = this.CommandTarget;
+
+            var routedCommand = command as RoutedCommand;
+            if (routedCommand != null && routedCommand.CanExecute(parameter, target))
+                routedCommand.Execute(parameter, target);
+            else if (command != null && command.CanExecute(parameter))
+                command.Execute(parameter);
+        }
     }
 }
