@@ -20,8 +20,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" Background="White">
-            <TextBlock Text="{StaticResource ResourceKey=lpn_LoginMessage}" Margin="10"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" Background="{StaticResource ResourceKey=EobwLightNavy}">
+            <TextBlock Text="{StaticResource ResourceKey=lpn_LoginMessage}" Margin="10" FontSize="14" FontWeight="Bold" Foreground="White"/>
             <ListBox Width="300" MaxHeight="150" BorderThickness="0">
                 <ListBoxItem>
                     <local:RegisteredAccountItem AccountNameText="MainAccount" ServiceNameText="TestService"/>

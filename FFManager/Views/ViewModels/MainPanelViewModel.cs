@@ -37,7 +37,7 @@ namespace FFManager.Views.ViewModels
         /// <summary>
         /// ログアウトボタンがクリックされたときのコマンドを定義します。
         /// </summary>
-        private ICommand LogoutButtonCommand
+        public ICommand LogoutButtonCommand
         {
             get => this.logoutButtonCommand;
         }
