@@ -145,7 +145,7 @@ namespace FFManager.Views.ViewModels
 
             this.PropertyChanged += MainWindowViewModel_PropertyChanged;
             this.CurrentStateTextForTitle = null;
-            this.CurrentStateTextForStatusBar = "準備完了";
+            this.CurrentStateTextForStatusBar = (string)Application.Current.FindResource("sts_Idle");
             this.LoginPanelIsShow = true;
 
             this.controller = new MainController(new ControllerInitializeParameter()

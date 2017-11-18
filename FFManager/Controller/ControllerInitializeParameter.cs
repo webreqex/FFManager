@@ -16,24 +16,13 @@ namespace FFManager.Controller
     public class ControllerInitializeParameter
     {
         // 非公開フィールド
-        private ApplicationState state;
         private ICollection<IService> services;
         private ICollection<IServiceAccount<IService>> serviceAccounts;
         private int currentAccountIndex;
 
 
         // 公開プロパティ
-
-        /// <summary>
-        /// 開始時の ApplicationState を取得または，設定します．
-        /// デフォルトの値は， ChoiceLoginAccount です．
-        /// </summary>
-        public ApplicationState State
-        {
-            get => this.state;
-            set => this.state = value;
-        }
-
+        
         /// <summary>
         /// 利用可能なサービスの一覧を示すコレクションを取得または，設定します．
         /// 最低限１つ以上指定されている必要があります．
@@ -72,7 +61,6 @@ namespace FFManager.Controller
         /// </summary>
         public ControllerInitializeParameter()
         {
-            this.state = ApplicationState.ChoiceLoginAccount;
             this.services = new IService[0];
             this.serviceAccounts = new IServiceAccount<IService>[0];
             this.currentAccountIndex = -1;

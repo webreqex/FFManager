@@ -9,6 +9,10 @@
     <system:String x:Key="Login">ログイン</system:String>
     <system:String x:Key="Logout">ログアウト</system:String>
 
+    <!-- Status Messages -->
+    <system:String x:Key="sts_Idle">準備完了</system:String>
+    <system:String x:Key="sts_DoLogin">ログインしてください</system:String>
+
     <!-- LoginPanel -->
     <system:String x:Key="lpn_LoginMessage">ログイン</system:String>
     <system:String x:Key="lpn_CancelButton">キャンセル</system:String>

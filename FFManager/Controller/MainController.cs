@@ -18,7 +18,6 @@ namespace FFManager.Controller
     public class MainController
     {
         // 非公開フィールド
-        private ApplicationState state;
         private ObservableCollection<IService> activeServices;
         private ObservableCollection<IServiceAccount<IService>> activeAccounts;
         private int currentAccountIndex;
@@ -27,16 +26,7 @@ namespace FFManager.Controller
 
 
         // 公開プロパティ
-
-        /// <summary>
-        /// アプリケーションの現在の状態を取得します．
-        /// </summary>
-        public ApplicationState State
-        {
-            get => this.state;
-            set => this.state = value;
-        }
-
+        
         /// <summary>
         /// 利用可能なサービスのコレクションを取得します．
         /// </summary>
@@ -103,7 +93,7 @@ namespace FFManager.Controller
         /// <param name="parameters"></param>
         public MainController(ControllerInitializeParameter parameters)
         {
-            this.state = parameters.State;
+            this.activeServices = new ObservableCollection<IService>(parameters.Services);
             this.activeAccounts = new ObservableCollection<IServiceAccount<IService>>(parameters.ServiceAccounts);
             this.currentAccountIndex = parameters.CurrentAccountIndex;
         }

@@ -64,7 +64,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controller\ApplicationState.cs" />
     <Compile Include="Controller\ControllerInitializeParameter.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Models\Elements\AuthorizeParameter.cs" />
@@ -81,6 +80,9 @@
     </Compile>
     <Compile Include="Views\Behaviors\CloseWindowAttachedBehavior.cs" />
     <Compile Include="Views\Behaviors\WindowStateAttachedBehavior.cs" />
+    <Compile Include="Views\Controls\AuthorizePanel.xaml.cs">
+      <DependentUpon>AuthorizePanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\Commons\MenuSplitBar.xaml.cs">
       <DependentUpon>MenuSplitBar.xaml</DependentUpon>
     </Compile>
@@ -99,6 +101,7 @@
     <Compile Include="Views\Controls\RegisteredAccountItem.xaml.cs">
       <DependentUpon>RegisteredAccountItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewModels\AuthorizePanelViewModel.cs" />
     <Compile Include="Views\ViewModels\LoginPanelViewModel.cs" />
     <Compile Include="Views\ViewModels\MainPanelViewModel.cs" />
     <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
@@ -145,6 +148,10 @@
     <Page Include="StringResources\Resources.ja-jp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\AuthorizePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\Commons\MenuSplitBar.xaml">
       <Generator>MSBuild:Compile</Generator>

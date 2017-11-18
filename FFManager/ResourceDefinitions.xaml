@@ -4,7 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         
+        <!-- Language Resources -->
         <ResourceDictionary Source="StringResources/Resources.ja-jp.xaml"/>
+        
+        <!-- View Resources -->
         <ResourceDictionary Source="Views/Controls/Styles/CaptionButtonStyle.xaml"/>
         <ResourceDictionary Source="Views/Controls/Styles/ColorDefinitions.xaml"/>
         <ResourceDictionary Source="Views/Controls/Styles/ModernButtonStyle.xaml"/>
