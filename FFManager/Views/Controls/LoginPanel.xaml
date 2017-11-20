@@ -43,7 +43,7 @@
                     </Style>
                 </StackPanel.Resources>
                 <Button Content="{StaticResource ResourceKey=lpn_CancelButton}" Command="{Binding CancelButtonCommand}"/>
-                <Button Content="{StaticResource ResourceKey=lpn_AuthorizeNewButton}"/>
+                <Button Content="{StaticResource ResourceKey=lpn_AuthorizeNewButton}" Command="{Binding AuthorizeButtonCommand}"/>
                 <Button Content="{StaticResource ResourceKey=lpn_LoginMessage}"/>
             </StackPanel>
         </StackPanel>

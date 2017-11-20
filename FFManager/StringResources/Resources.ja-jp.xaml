@@ -21,6 +21,11 @@
     
     <!-- AuthorizePanel -->
     <system:String x:Key="atp_Authorize">新規アカウントの認証</system:String>
+    <system:String x:Key="atp_StartMessage">認証するアカウントの提供元サービスを選択して下さい。</system:String>
+    <system:String x:Key="atp_CancelButton">キャンセル</system:String>
+    <system:String x:Key="atp_BackButton">戻る</system:String>
+    <system:String x:Key="atp_NextButton">次へ</system:String>
+    <system:String x:Key="atp_FinishButton">完了</system:String>
 
     <!-- MainPanel -->
     <system:String x:Key="mpl_AllAccounts">すべての関係アカウント</system:String>

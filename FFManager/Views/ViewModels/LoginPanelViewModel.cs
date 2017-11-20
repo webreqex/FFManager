@@ -43,6 +43,14 @@ namespace FFManager.Views.ViewModels
             get => this.cancelButtonCommand;
         }
 
+        /// <summary>
+        /// 新規認証ボタンがクリックされた際のコマンドを取得します。
+        /// </summary>
+        public ICommand AuthorizeButtonCommand
+        {
+            get => this.authorizeButtonCommand;
+        }
+
 
         // 公開イベント
 
@@ -55,6 +63,15 @@ namespace FFManager.Views.ViewModels
             remove => this.cancelButtonClick -= value;
         }
 
+        /// <summary>
+        /// 新規認証ボタンがクリックされたときに発生します。
+        /// </summary>
+        public event EventHandler<CommandEventArgs> AuthorizeButtonClick
+        {
+            add => this.authorizeButtonClick += value;
+            remove => this.authorizeButtonClick -= value;
+        }
+
 
         // コンストラクタ
 
@@ -65,6 +82,8 @@ namespace FFManager.Views.ViewModels
         {
             this.cancelButtonCommand =
                 new DelegateCommand(param => this.cancelButtonClick?.Invoke(this, new CommandEventArgs()));
+            this.authorizeButtonCommand =
+                new DelegateCommand(param => this.authorizeButtonClick?.Invoke(this, new CommandEventArgs()));
         }
 
 

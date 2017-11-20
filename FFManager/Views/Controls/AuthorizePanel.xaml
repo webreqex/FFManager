@@ -8,13 +8,38 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance {x:Type vm:AuthorizePanelViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Background="{StaticResource EobwLightNavy}">
-            <TextBlock VerticalAlignment="Center" Margin="10,0" Foreground="White" FontSize="13" Text="{StaticResource atp_Authorize}"/>
+        <Grid Background="{StaticResource EobwLightNavy}" Grid.Row="0">
+            <TextBlock VerticalAlignment="Center" Margin="10,5" Foreground="White" FontSize="13" Text="{StaticResource atp_Authorize}"/>
         </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Margin="5" Text="{StaticResource atp_StartMessage}" Grid.Row="0"/>
+            <ListBox BorderThickness="0" Grid.Row="1">
+                <ListBoxItem>Twitter</ListBoxItem>
+                <ListBoxItem>Pawoo</ListBoxItem>
+                <ListBoxItem>mstdn.jp</ListBoxItem>
+                <ListBoxItem>friends.nico</ListBoxItem>
+            </ListBox>
+        </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=ModernButtonStyleKey}">
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="{StaticResource atp_CancelButton}" Command="{Binding CancelButtonCommand}"/>
+            <Button Content="{StaticResource atp_NextButton}"/>
+            <Button Content="{StaticResource atp_BackButton}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -222,12 +222,18 @@ namespace FFManager.Views.ViewModels
                     {
                         this.LoginPanelIsShow = false;
                     };
+                    this.LoginPanelViewModel.AuthorizeButtonClick += delegate
+                    {
+                        this.LoginPanelIsShow = false;
+                        this.AuthorizePanelIsShow = true;
+                    };
                     break;
                 case nameof(this.AuthorizePanelViewModel):
                     this.AuthorizePanelViewModel.ParentWindowViewModel = this;
-                    this.LoginPanelViewModel.CancelButtonClick += delegate
+                    this.AuthorizePanelViewModel.CancelButtonClick += delegate
                     {
-                        
+                        this.LoginPanelIsShow = true;
+                        this.AuthorizePanelIsShow = false;
                     };
                     break;
             }
