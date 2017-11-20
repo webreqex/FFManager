@@ -37,7 +37,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Window.DataContext>
-        <vm:MainWindowViewModel LoginPanelViewModel="{StaticResource LoginPanelVMKey}" MainPanelViewModel="{StaticResource MainPanelVMKey}"/>
+        <vm:MainWindowViewModel LoginPanelViewModel="{StaticResource LoginPanelVMKey}" MainPanelViewModel="{StaticResource MainPanelVMKey}" AuthorizePanelViewModel="{StaticResource AuthorizePanelVMKey}"/>
     </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome
