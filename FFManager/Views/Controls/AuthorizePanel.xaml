@@ -9,6 +9,12 @@
              d:DataContext="{d:DesignInstance {x:Type vm:AuthorizePanelViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="{StaticResource EobwLightNavy}">
+            <TextBlock VerticalAlignment="Center" Margin="10,0" Foreground="White" FontSize="13" Text="{StaticResource atp_Authorize}"/>
+        </Grid>
     </Grid>
 </UserControl>

@@ -17,6 +17,8 @@ namespace FFManager.Views.ViewModels
         // 非公開フィールド
         private DelegateCommand cancelButtonCommand;
         private EventHandler<CommandEventArgs> cancelButtonClick;
+        private DelegateCommand authorizeButtonCommand;
+        private EventHandler<CommandEventArgs> authorizeButtonClick;
 
 
         // 公開プロパティ

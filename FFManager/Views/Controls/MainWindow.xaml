@@ -33,6 +33,7 @@
 
             <vm:MainPanelViewModel x:Key="MainPanelVMKey"/>
             <vm:LoginPanelViewModel x:Key="LoginPanelVMKey"/>
+            <vm:AuthorizePanelViewModel x:Key="AuthorizePanelVMKey"/>
         </ResourceDictionary>
     </Window.Resources>
     <Window.DataContext>
@@ -97,6 +98,20 @@
                     </Style>
                 </Grid.Style>
                 <local:LoginPanel DataContext="{StaticResource LoginPanelVMKey}"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Hidden"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=AuthorizePanelIsShow}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <local:AuthorizePanel DataContext="{StaticResource AuthorizePanelVMKey}"/>
             </Grid>
 
             <Grid

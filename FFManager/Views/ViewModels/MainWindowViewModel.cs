@@ -83,6 +83,15 @@ namespace FFManager.Views.ViewModels
         }
 
         /// <summary>
+        /// 認証パネルを表示するかどうかを示す値を取得または設定します。
+        /// </summary>
+        public bool AuthorizePanelIsShow
+        {
+            get => this.GetBindingValue<bool>(nameof(this.AuthorizePanelIsShow));
+            set => this.SetBindingValue(nameof(this.AuthorizePanelIsShow), value);
+        }
+
+        /// <summary>
         /// この ViewModel の管理下に置かれているMainPanelのViewModelのインスタンスを取得または設定します。
         /// </summary>
         public MainPanelViewModel MainPanelViewModel
@@ -92,12 +101,21 @@ namespace FFManager.Views.ViewModels
         }
 
         /// <summary>
-        /// この ViewModel の管理下に置かれるLoginPanelのViewModelインスタンスを取得または設定します。
+        /// この ViewModel の管理下に置かれるLoginPanelのViewModelのインスタンスを取得または設定します。
         /// </summary>
         public LoginPanelViewModel LoginPanelViewModel
         {
             get => this.GetBindingValue<LoginPanelViewModel>(nameof(this.LoginPanelViewModel));
             set => this.SetBindingValue(nameof(this.LoginPanelViewModel), value);
+        }
+
+        /// <summary>
+        /// この ViewModel の管理下に置かれているAuthorizePanelのViewModelのインスタンスを取得または設定します。
+        /// </summary>
+        public AuthorizePanelViewModel AuthorizePanelViewModel
+        {
+            get => this.GetBindingValue<AuthorizePanelViewModel>(nameof(this.AuthorizePanelViewModel));
+            set => this.SetBindingValue(nameof(this.AuthorizePanelViewModel), value);
         }
 
 
@@ -203,6 +221,13 @@ namespace FFManager.Views.ViewModels
                     this.LoginPanelViewModel.CancelButtonClick += delegate
                     {
                         this.LoginPanelIsShow = false;
+                    };
+                    break;
+                case nameof(this.AuthorizePanelViewModel):
+                    this.AuthorizePanelViewModel.ParentWindowViewModel = this;
+                    this.LoginPanelViewModel.CancelButtonClick += delegate
+                    {
+                        
                     };
                     break;
             }

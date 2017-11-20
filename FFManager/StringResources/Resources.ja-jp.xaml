@@ -18,6 +18,9 @@
     <system:String x:Key="lpn_CancelButton">キャンセル</system:String>
     <system:String x:Key="lpn_AuthorizeNewButton">新規認証</system:String>
     <system:String x:Key="lpn_LoginButton">ログイン</system:String>
+    
+    <!-- AuthorizePanel -->
+    <system:String x:Key="atp_Authorize">新規アカウントの認証</system:String>
 
     <!-- MainPanel -->
     <system:String x:Key="mpl_AllAccounts">すべての関係アカウント</system:String>
