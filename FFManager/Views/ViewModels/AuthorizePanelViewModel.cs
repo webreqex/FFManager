@@ -7,12 +7,15 @@ using System.Windows.Input;
 
 using LocusCommon.Windows.ViewModels;
 
+using FFManager.Controller;
+using FFManager.Views.ViewModels.Bases;
+
 namespace FFManager.Views.ViewModels
 {
     /// <summary>
     /// AuthorizePanelのビューモデルを定義します。
     /// </summary>
-    public class AuthorizePanelViewModel : ExtendedViewModelBase
+    public class AuthorizePanelViewModel : SubPanelViewModelBase
     {
         // 非公開フィールド
         private DelegateCommand cancelButtonCommand;
@@ -20,15 +23,6 @@ namespace FFManager.Views.ViewModels
 
 
         // 公開プロパティ
-
-        /// <summary>
-        /// 親ウィンドウにあたるMainWindowのビューモデルが存在している場合は、取得または設定します。
-        /// </summary>
-        public MainWindowViewModel ParentWindowViewModel
-        {
-            get => this.GetBindingValue<MainWindowViewModel>(nameof(this.ParentWindowViewModel));
-            set => this.SetBindingValue(nameof(this.ParentWindowViewModel), value);
-        }
 
 
         // 公開プロパティ :: コマンド
@@ -64,6 +58,11 @@ namespace FFManager.Views.ViewModels
             this.cancelButtonCommand =
                 new DelegateCommand(param => this.cancelButtonClick?.Invoke(this, new CommandEventArgs()));
         }
+
+
+        // 非公開メソッド
+        
+
 
 
         // 内部メンバ

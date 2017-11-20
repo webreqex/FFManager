@@ -9,10 +9,11 @@ using System.Windows.Input;
 using LocusCommon.Windows.ViewModels;
 
 using FFManager.Controller;
+using FFManager.Views.ViewModels.Bases;
 
 namespace FFManager.Views.ViewModels
 {
-    public class LoginPanelViewModel : ExtendedViewModelBase
+    public class LoginPanelViewModel : SubPanelViewModelBase
     {
         // 非公開フィールド
         private DelegateCommand cancelButtonCommand;
@@ -22,15 +23,6 @@ namespace FFManager.Views.ViewModels
 
 
         // 公開プロパティ
-
-        /// <summary>
-        /// 親ウィンドウにあたるMainWindowのビューモデルが存在している場合は、取得または設定します。
-        /// </summary>
-        public MainWindowViewModel ParentWindowViewModel
-        {
-            get => this.GetBindingValue<MainWindowViewModel>(nameof(this.ParentWindowViewModel));
-            set => this.SetBindingValue(nameof(this.ParentWindowViewModel), value);
-        }
 
 
         // 公開プロパティ :: コマンド
