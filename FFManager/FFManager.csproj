@@ -101,6 +101,9 @@
     <Compile Include="Views\Controls\RegisteredAccountItem.xaml.cs">
       <DependentUpon>RegisteredAccountItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\ServiceItem.xaml.cs">
+      <DependentUpon>ServiceItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewModels\AuthorizePanelViewModel.cs" />
     <Compile Include="Views\ViewModels\Bases\SubPanelViewModelBase.cs" />
     <Compile Include="Views\ViewModels\LoginPanelViewModel.cs" />
@@ -175,6 +178,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Controls\RegisteredAccountItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\ServiceItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

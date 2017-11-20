@@ -16,7 +16,6 @@ namespace FFManager.Views.ViewModels.Bases
     public class SubPanelViewModelBase : ExtendedViewModelBase
     {
         // 非公開フィールド
-        private MainWindowViewModel parentWindowViewModel;
         private MainController mainController;
 
 
@@ -57,7 +56,7 @@ namespace FFManager.Views.ViewModels.Bases
         {
             if (this.mainController == null)
             {
-                var mainwndVM = this.parentWindowViewModel;
+                var mainwndVM = this.ParentWindowViewModel;
                 var controller = (MainController)mainwndVM.GetType().GetField("controller", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).GetValue(mainwndVM);
                 this.mainController = controller ?? throw new Exception("MainControllerの取得に失敗しました。");
             }

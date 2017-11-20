@@ -24,12 +24,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Margin="5" Text="{StaticResource atp_StartMessage}" Grid.Row="0"/>
-            <ListBox BorderThickness="0" Grid.Row="1">
-                <ListBoxItem>Twitter</ListBoxItem>
-                <ListBoxItem>Pawoo</ListBoxItem>
-                <ListBoxItem>mstdn.jp</ListBoxItem>
-                <ListBoxItem>friends.nico</ListBoxItem>
-            </ListBox>
+            <ListBox BorderThickness="0" ItemsSource="{Binding ServicesListBoxItems}" Grid.Row="1"/>
         </Grid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel.Resources>
