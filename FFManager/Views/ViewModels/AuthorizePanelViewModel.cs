@@ -82,6 +82,7 @@ namespace FFManager.Views.ViewModels
         
         private void updateServices()
         {
+            // メインウィンドウのビューモデルがすべて初期化された後でなければ実行できません。
             var services = this.MainController.ActiveServices;
             this.serviceListBoxItems = new ObservableCollection<_serviceItem>(services.Select(item => new _serviceItem(item)));
         }
