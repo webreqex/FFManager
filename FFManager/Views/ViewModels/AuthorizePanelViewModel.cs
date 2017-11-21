@@ -72,9 +72,6 @@ namespace FFManager.Views.ViewModels
             // コマンドの初期化
             this.cancelButtonCommand =
                 new DelegateCommand(param => this.cancelButtonClick?.Invoke(this, new CommandEventArgs()));
-
-            // サービスアイテムの一覧の初期化
-            this.updateServices();
         }
 
 
@@ -95,7 +92,8 @@ namespace FFManager.Views.ViewModels
         /// </summary>
         public void ServicesInitialize()
         {
-
+            // サービスアイテムの一覧の初期化
+            this.updateServices();
         }
 
 
