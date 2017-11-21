@@ -235,6 +235,7 @@ namespace FFManager.Views.ViewModels
                         this.LoginPanelIsShow = true;
                         this.AuthorizePanelIsShow = false;
                     };
+                    this.AuthorizePanelViewModel.ServicesInitialize();
                     break;
             }
         }

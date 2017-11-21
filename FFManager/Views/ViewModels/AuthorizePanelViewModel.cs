@@ -88,6 +88,17 @@ namespace FFManager.Views.ViewModels
         }
 
 
+        // 公開メソッド
+
+        /// <summary>
+        /// Serviceを初期化します。
+        /// </summary>
+        public void ServicesInitialize()
+        {
+
+        }
+
+
         // 内部メンバ
 
         /// <summary>
