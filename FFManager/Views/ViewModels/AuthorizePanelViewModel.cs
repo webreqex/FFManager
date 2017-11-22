@@ -24,7 +24,7 @@ namespace FFManager.Views.ViewModels
         // 非公開フィールド
         private DelegateCommand cancelButtonCommand;
         private EventHandler<CommandEventArgs> cancelButtonClick;
-        private ObservableCollection<_serviceItem> serviceListBoxItems;
+        private ObservableCollection<_serviceItem> serviceItemList;
 
 
         // 公開プロパティ
@@ -81,7 +81,13 @@ namespace FFManager.Views.ViewModels
         {
             // メインウィンドウのビューモデルがすべて初期化された後でなければ実行できません。
             var services = this.MainController.ActiveServices;
-            this.serviceListBoxItems = new ObservableCollection<_serviceItem>(services.Select(item => new _serviceItem(item)));
+            this.serviceItemList = new ObservableCollection<_serviceItem>(services.Select(item => new _serviceItem(item)));
+            this.serviceItemList.CollectionChanged += (sender, e) => Console.WriteLine();
+        }
+
+        private void applyServicesListBoxItems()
+        {
+            this.ServicesListBoxItems = new ObservableCollection<ListBoxItem>(this.serviceItemList.Select(item => item.CreatedItemControl));
         }
 
 
