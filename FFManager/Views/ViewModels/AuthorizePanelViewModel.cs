@@ -12,6 +12,7 @@ using LocusCommon.Windows.ViewModels;
 using FFManager.Controller;
 using FFManager.Models;
 using FFManager.Views.Controls;
+using FFManager.Views.ViewModels.AuthorizePanelVMElements;
 using FFManager.Views.ViewModels.Bases;
 
 namespace FFManager.Views.ViewModels
@@ -24,10 +25,21 @@ namespace FFManager.Views.ViewModels
         // 非公開フィールド
         private DelegateCommand cancelButtonCommand;
         private EventHandler<CommandEventArgs> cancelButtonClick;
+        private DelegateCommand backButtonCommand;
+        private DelegateCommand nextButtonCommand;
         private ObservableCollection<_serviceItem> serviceItemList;
 
 
         // 公開プロパティ
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public AuthorizePanelState State
+        {
+            get => this.GetBindingValue<AuthorizePanelState>(nameof(this.State));
+            private set => this.SetBindingValue(nameof(this.State), value);
+        }
 
         /// <summary>
         /// 
@@ -47,6 +59,22 @@ namespace FFManager.Views.ViewModels
         public ICommand CancelButtonCommand
         {
             get => this.cancelButtonCommand;
+        }
+
+        /// <summary>
+        /// 「戻る」ボタンがクリックされた際のコマンドを取得します。
+        /// </summary>
+        public ICommand BackButtonCommand
+        {
+            get => this.backButtonCommand;
+        }
+
+        /// <summary>
+        /// 「進む」ボタンがクリックされた際のコマンドを取得します。
+        /// </summary>
+        public ICommand NextButtonCommand
+        {
+            get => this.nextButtonCommand;
         }
 
 
@@ -72,31 +100,62 @@ namespace FFManager.Views.ViewModels
             // コマンドの初期化
             this.cancelButtonCommand =
                 new DelegateCommand(param => this.cancelButtonClick?.Invoke(this, new CommandEventArgs()));
+            this.backButtonCommand = new DelegateCommand(param => this.goBack(), param => this.checkCanGoBack());
+            this.nextButtonCommand = new DelegateCommand(param => this.goNext(), param => this.checkCanGoNext());
+
+            // サービスリストの初期化
+            this.serviceItemList = new ObservableCollection<_serviceItem>();
+            this.serviceItemList.CollectionChanged += (sender, e) => this.applyServicesListBoxItems();
         }
 
 
         // 非公開メソッド
 
+        /// <summary>
+        /// MainControllerのサービス一覧を取得し、サービスリストを更新します。
+        /// </summary>
         private void updateServices()
         {
             // メインウィンドウのビューモデルがすべて初期化された後でなければ実行できません。
             var services = this.MainController.ActiveServices;
-            //this.serviceItemList.CollectionChanged += (sender, e) => this.applyServicesListBoxItems();
-            this.serviceItemList = new ObservableCollection<_serviceItem>(services.Select(item => new _serviceItem(item)));
-            this.applyServicesListBoxItems();
+
+            this.serviceItemList.Clear();
+            foreach (var item in services)
+                this.serviceItemList.Add(new _serviceItem(item));
         }
 
+        /// <summary>
+        /// サービスリストの内容をUIへ反映します。
+        /// </summary>
         private void applyServicesListBoxItems()
         {
-            try
-            {
-                this.ServicesListBoxItems = new ObservableCollection<ServiceItem>(this.serviceItemList.Select(item => item.CreatedItemControl));
-            }
-            catch
-            {
-                throw new Exception("aaa");
-            }
+            this.ServicesListBoxItems = new ObservableCollection<ServiceItem>(this.serviceItemList.Select(item => item.CreatedItemControl));
         }
+
+        private void goNext()
+        {
+            this.State++;
+        }
+
+        private void goBack()
+        {
+            this.State--;
+        }
+
+        private bool checkCanGoNext()
+        {
+            return this.State != AuthorizePanelState.ServiceLogin;
+        }
+
+        private bool checkCanGoBack()
+        {
+            return this.State != AuthorizePanelState.ServiceSelect;
+        }
+        
+
+
+        // 非公開静的メソッド
+        
 
 
         // 公開メソッド
@@ -121,6 +180,9 @@ namespace FFManager.Views.ViewModels
 
         }
 
+        /// <summary>
+        /// サービスに関する情報を保持します。
+        /// </summary>
         private class _serviceItem
         {
             // 非公開フィールド

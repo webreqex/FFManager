@@ -105,6 +105,7 @@
       <DependentUpon>ServiceItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewModels\AuthorizePanelViewModel.cs" />
+    <Compile Include="Views\ViewModels\AuthorizePanelVMElements\AuthorizePanelState.cs" />
     <Compile Include="Views\ViewModels\Bases\SubPanelViewModelBase.cs" />
     <Compile Include="Views\ViewModels\LoginPanelViewModel.cs" />
     <Compile Include="Views\ViewModels\MainPanelViewModel.cs" />
