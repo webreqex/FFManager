@@ -32,9 +32,9 @@ namespace FFManager.Views.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public ObservableCollection<ListBoxItem> ServicesListBoxItems
+        public ObservableCollection<ServiceItem> ServicesListBoxItems
         {
-            get => this.GetBindingValue<ObservableCollection<ListBoxItem>>(nameof(this.ServicesListBoxItems));
+            get => this.GetBindingValue<ObservableCollection<ServiceItem>>(nameof(this.ServicesListBoxItems));
             private set => this.SetBindingValue(nameof(this.ServicesListBoxItems), value);
         }
 
@@ -76,18 +76,26 @@ namespace FFManager.Views.ViewModels
 
 
         // 非公開メソッド
-        
+
         private void updateServices()
         {
             // メインウィンドウのビューモデルがすべて初期化された後でなければ実行できません。
             var services = this.MainController.ActiveServices;
+            //this.serviceItemList.CollectionChanged += (sender, e) => this.applyServicesListBoxItems();
             this.serviceItemList = new ObservableCollection<_serviceItem>(services.Select(item => new _serviceItem(item)));
-            this.serviceItemList.CollectionChanged += (sender, e) => Console.WriteLine();
+            this.applyServicesListBoxItems();
         }
 
         private void applyServicesListBoxItems()
         {
-            this.ServicesListBoxItems = new ObservableCollection<ListBoxItem>(this.serviceItemList.Select(item => item.CreatedItemControl));
+            try
+            {
+                this.ServicesListBoxItems = new ObservableCollection<ServiceItem>(this.serviceItemList.Select(item => item.CreatedItemControl));
+            }
+            catch
+            {
+                throw new Exception("aaa");
+            }
         }
 
 
@@ -117,7 +125,7 @@ namespace FFManager.Views.ViewModels
         {
             // 非公開フィールド
             private IService service;
-            private ListBoxItem createdItemControl;
+            private ServiceItem createdItemControl;
 
 
             // 公開プロパティ
@@ -125,7 +133,7 @@ namespace FFManager.Views.ViewModels
             /// <summary>
             /// Serivceに合わせて作成されたListBoxItemコントロールのインスタンスを初期化します。
             /// </summary>
-            public ListBoxItem CreatedItemControl
+            public ServiceItem CreatedItemControl
             {
                 get => this.createdItemControl;
             }
@@ -146,16 +154,13 @@ namespace FFManager.Views.ViewModels
 
 
             // 非公開メソッド
-            
+
             private void createListBoxItem()
             {
                 var serviceItemElem = new ServiceItem();
                 serviceItemElem.ServiceName = this.service.ServiceName;
                 serviceItemElem.ServiceUrl = this.service.Url.Host;
-
-                var listBoxItem = new ListBoxItem();
-                listBoxItem.Content = serviceItemElem;
-                this.createdItemControl = listBoxItem;
+                this.createdItemControl = serviceItemElem;
             }
         }
     }
