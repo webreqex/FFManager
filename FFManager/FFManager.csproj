@@ -66,10 +66,15 @@
     </Compile>
     <Compile Include="Controller\ControllerInitializeParameter.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Models\AuthorizeViewModelBase.cs" />
     <Compile Include="Models\Elements\AuthorizeParameter.cs" />
     <Compile Include="Models\Extensions\AccountExtension.cs" />
     <Compile Include="Models\IAccount.cs" />
     <Compile Include="Models\RelationType.cs" />
+    <Compile Include="Models\Services\Tests\AuthorizeViews\View.xaml.cs">
+      <DependentUpon>View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services\Tests\AuthorizeViews\ViewModel.cs" />
     <Compile Include="Models\Services\Tests\ModelTestService.cs" />
     <Compile Include="Models\Services\Tests\ModelTestServiceAccount.cs" />
     <Compile Include="Models\Services\Twitter\TwitterRelationAccount.cs" />
@@ -151,6 +156,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Models\Services\Tests\AuthorizeViews\View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ResourceDefinitions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
