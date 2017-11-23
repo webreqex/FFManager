@@ -106,6 +106,9 @@ namespace FFManager.Views.ViewModels
             // サービスリストの初期化
             this.serviceItemList = new ObservableCollection<_serviceItem>();
             this.serviceItemList.CollectionChanged += (sender, e) => this.applyServicesListBoxItems();
+
+            // 状態を初期化
+            this.State = AuthorizePanelState.ServiceSelect;
         }
 
 
