@@ -19,10 +19,13 @@ namespace FFManager.Models
 
         // 公開プロパティ
 
+        /// <summary>
+        /// このビューモデルで管理しているターゲットコントロールを設定します。
+        /// </summary>
         public Control Target
         {
             get => this.GetBindingValue<Control>(nameof(this.Target));
-            set => this.SetBindingValue(nameof(this.Target), value)
+            set => this.SetBindingValue(nameof(this.Target), value);
         }
     }
 }
