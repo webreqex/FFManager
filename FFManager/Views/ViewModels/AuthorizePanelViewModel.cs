@@ -33,7 +33,8 @@ namespace FFManager.Views.ViewModels
         // 公開プロパティ
 
         /// <summary>
-        /// 
+        /// 現在の状態を取得します。
+        /// このプロパティの値は、ビュー上の Next/Back ボタンのコマンドにより変化します。
         /// </summary>
         public AuthorizePanelState State
         {
@@ -42,12 +43,21 @@ namespace FFManager.Views.ViewModels
         }
 
         /// <summary>
-        /// 
+        /// サービスの選択肢となるコントロールの一覧を取得します。
         /// </summary>
         public ObservableCollection<ServiceItem> ServicesListBoxItems
         {
             get => this.GetBindingValue<ObservableCollection<ServiceItem>>(nameof(this.ServicesListBoxItems));
             private set => this.SetBindingValue(nameof(this.ServicesListBoxItems), value);
+        }
+
+        /// <summary>
+        /// サービス選択用のリスト部を表示するかどうかを示す値を取得します。
+        /// </summary>
+        public bool ServiceListPanelIsShow
+        {
+            get => this.GetBindingValue<bool>(nameof(this.ServiceListPanelIsShow));
+            set => this.SetBindingValue(nameof(this.ServiceListPanelIsShow), value);
         }
 
 
@@ -106,6 +116,12 @@ namespace FFManager.Views.ViewModels
             // サービスリストの初期化
             this.serviceItemList = new ObservableCollection<_serviceItem>();
             this.serviceItemList.CollectionChanged += (sender, e) => this.applyServicesListBoxItems();
+
+            // 自身のバインディングプロパティを監視
+            this.PropertyChanged += propertyChanged;
+
+            // 状態を初期化
+            this.State = AuthorizePanelState.ServiceSelect;
         }
 
 
@@ -132,30 +148,78 @@ namespace FFManager.Views.ViewModels
             this.ServicesListBoxItems = new ObservableCollection<ServiceItem>(this.serviceItemList.Select(item => item.CreatedItemControl));
         }
 
+        /// <summary>
+        /// Stateプロパティの値を1つ次の段階へシフトします。
+        /// </summary>
         private void goNext()
         {
             this.State++;
         }
 
+        /// <summary>
+        /// Stateプロパティの値を1つ前の段階へシフトします。
+        /// </summary>
         private void goBack()
         {
             this.State--;
         }
 
+        /// <summary>
+        /// Stateプロパティが1つ次の段階へシフト可能かどうかを示す値を取得します。
+        /// </summary>
+        /// <returns></returns>
         private bool checkCanGoNext()
         {
             return this.State != AuthorizePanelState.ServiceLogin;
         }
 
+        /// <summary>
+        /// Stateプロパティが1つ前の段階へシフト可能かどうかを示す値を取得します。
+        /// </summary>
+        /// <returns></returns>
         private bool checkCanGoBack()
         {
             return this.State != AuthorizePanelState.ServiceSelect;
         }
-        
+
+        /// <summary>
+        /// 現在の State プロパティの値に合わせて画面を遷移します。
+        /// </summary>
+        private void stateChanged()
+        {
+            // 一旦全部非表示にする
+            this.ServiceListPanelIsShow = false;
+
+            switch (this.State)
+            {
+                case AuthorizePanelState.ServiceSelect:
+                    this.ServiceListPanelIsShow = true;
+                    break;
+            }
+        }
+
+
+        // 非公開メソッド :: イベント系
+
+        /// <summary>
+        /// PropertyChangedイベントを処理します。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void propertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(this.State):
+                    this.stateChanged();
+                    break;
+            }
+        }
+
 
 
         // 非公開静的メソッド
-        
+
 
 
         // 公開メソッド

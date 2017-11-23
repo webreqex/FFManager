@@ -12,6 +12,12 @@ namespace FFManager.Views.ViewModels.AuthorizePanelVMElements
     public enum AuthorizePanelState : Int32
     {
         /// <summary>
+        /// 不明な状態
+        /// </summary>
+        /// <remarks>AuthorizePanelのViewModelでコンストラクタでServiceSelectを代入させることで、CanExecuteChangedを発生させるための実装</remarks>
+        Unknown = 0,
+
+        /// <summary>
         /// サービスを選択している画面
         /// </summary>
         ServiceSelect = 1,
