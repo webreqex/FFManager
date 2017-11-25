@@ -101,14 +101,20 @@
     <Compile Include="Views\Controls\RegisteredAccountItem.xaml.cs">
       <DependentUpon>RegisteredAccountItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\ServiceAuthorization\TestService\ServiceLoginPanel.xaml.cs">
+      <DependentUpon>ServiceLoginPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\ServiceItem.xaml.cs">
       <DependentUpon>ServiceItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewModels\AuthorizePanelViewModel.cs" />
+    <Compile Include="Views\ViewModels\AuthorizePanelVMElements\AuthorizePanelState.cs" />
     <Compile Include="Views\ViewModels\Bases\SubPanelViewModelBase.cs" />
     <Compile Include="Views\ViewModels\LoginPanelViewModel.cs" />
     <Compile Include="Views\ViewModels\MainPanelViewModel.cs" />
     <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\ViewModels\ServiceAuthorization\ServiceAuthorizationPanelViewModelBase.cs" />
+    <Compile Include="Views\ViewModels\ServiceAuthorization\TestService\ServiceLoginPanelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Bases\RelationAccountBase.cs" />
@@ -178,6 +184,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Controls\RegisteredAccountItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\ServiceAuthorization\TestService\ServiceLoginPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
