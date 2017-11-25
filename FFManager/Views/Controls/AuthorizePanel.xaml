@@ -17,6 +17,7 @@
         <Grid Background="{StaticResource EobwLightNavy}" Grid.Row="0">
             <TextBlock VerticalAlignment="Center" Margin="10,5" Foreground="White" FontSize="13" Text="{StaticResource atp_Authorize}"/>
         </Grid>
+        
         <Grid Grid.Row="1">
             <Grid.Style>
                 <Style TargetType="Grid">
@@ -34,8 +35,22 @@
             </Grid.RowDefinitions>
 
             <TextBlock Margin="5" Text="{StaticResource atp_StartMessage}" Grid.Row="0"/>
-            <ListBox BorderThickness="0" ItemsSource="{Binding ServicesListBoxItems}" Grid.Row="1"/>
+            <ListBox BorderThickness="0" ItemsSource="{Binding ServicesListBoxItems}" SelectedIndex="{Binding ServicesListBoxSelectedIndex}" Grid.Row="1"/>
         </Grid>
+        
+        <Grid Grid.Row="1" >
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding AuthorizeParentPanelIsShow}" Value="false">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+        </Grid>
+        
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=ModernButtonStyleKey}">

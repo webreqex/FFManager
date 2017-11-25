@@ -11,6 +11,7 @@ using LocusCommon.Windows.ViewModels;
 
 using FFManager.Controller;
 using FFManager.Models;
+using FFManager.Models.Elements;
 using FFManager.Views.Controls;
 using FFManager.Views.ViewModels.AuthorizePanelVMElements;
 using FFManager.Views.ViewModels.Bases;
@@ -52,12 +53,39 @@ namespace FFManager.Views.ViewModels
         }
 
         /// <summary>
+        /// 現在選択しているサービスのインデックス番号を取得または設定します．
+        /// </summary>
+        public int ServicesListBoxSelectedIndex
+        {
+            get => this.GetBindingValue<int>(nameof(this.ServicesListBoxSelectedIndex));
+            set => this.SetBindingValue(nameof(this.ServicesListBoxSelectedIndex), value);
+        }
+
+        /// <summary>
         /// サービス選択用のリスト部を表示するかどうかを示す値を取得します。
         /// </summary>
         public bool ServiceListPanelIsShow
         {
             get => this.GetBindingValue<bool>(nameof(this.ServiceListPanelIsShow));
-            set => this.SetBindingValue(nameof(this.ServiceListPanelIsShow), value);
+            private set => this.SetBindingValue(nameof(this.ServiceListPanelIsShow), value);
+        }
+
+        /// <summary>
+        /// サービス認証用の親パネル部を表示するかどうかを示す値を取得します．
+        /// </summary>
+        public bool AuthorizeParentPanelIsShow
+        {
+            get => this.GetBindingValue<bool>(nameof(this.AuthorizeParentPanelIsShow));
+            private set => this.SetBindingValue(nameof(this.AuthorizeParentPanelIsShow), value);
+        }
+
+        /// <summary>
+        /// View 側から AuthorizeParentPanel の Children を ViewModel へ渡すためのバインディング プロパティです．
+        /// </summary>
+        public UIElementCollection AuthorizeParentPanelChildren
+        {
+            private get => this.GetBindingValue<UIElementCollection>(nameof(this.AuthorizeParentPanelChildren));
+            set => this.SetBindingValue(nameof(this.AuthorizeParentPanelChildren), value);
         }
 
 
@@ -146,6 +174,7 @@ namespace FFManager.Views.ViewModels
         private void applyServicesListBoxItems()
         {
             this.ServicesListBoxItems = new ObservableCollection<ServiceItem>(this.serviceItemList.Select(item => item.CreatedItemControl));
+            this.ServicesListBoxSelectedIndex = 0;
         }
 
         /// <summary>
@@ -189,13 +218,27 @@ namespace FFManager.Views.ViewModels
         {
             // 一旦全部非表示にする
             this.ServiceListPanelIsShow = false;
+            this.AuthorizeParentPanelIsShow = false;
 
             switch (this.State)
             {
                 case AuthorizePanelState.ServiceSelect:
                     this.ServiceListPanelIsShow = true;
                     break;
+                case AuthorizePanelState.ServiceLogin:
+                    this.AuthorizeParentPanelIsShow = true;
+                    this.getSelectedService().AuthorizeAsync(new AuthorizeParameter() { AuthorizeParentPanel = null });
+                    break;
             }
+        }
+
+        /// <summary>
+        /// サービス選択リストで選択されているサービスを取得します．
+        /// </summary>
+        /// <returns></returns>
+        private IService getSelectedService()
+        {
+            return this.serviceItemList[this.ServicesListBoxSelectedIndex].Service;
         }
 
 
@@ -262,6 +305,14 @@ namespace FFManager.Views.ViewModels
             public ServiceItem CreatedItemControl
             {
                 get => this.createdItemControl;
+            }
+
+            /// <summary>
+            /// サービスのインスタンスを取得します．
+            /// </summary>
+            public IService Service
+            {
+                get => this.service;
             }
 
 
