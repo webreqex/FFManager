@@ -83,6 +83,9 @@
     <Compile Include="Views\Controls\AuthorizePanel.xaml.cs">
       <DependentUpon>AuthorizePanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\Commons\ChildrenBindableGrid.xaml.cs">
+      <DependentUpon>ChildrenBindableGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\Commons\MenuSplitBar.xaml.cs">
       <DependentUpon>MenuSplitBar.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Controls\AuthorizePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\Commons\ChildrenBindableGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
