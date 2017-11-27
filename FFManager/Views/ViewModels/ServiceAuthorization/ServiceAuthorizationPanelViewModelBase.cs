@@ -8,7 +8,7 @@ using LocusCommon.Windows.ViewModels;
 
 namespace FFManager.Views.ViewModels.ServiceAuthorization
 {
-    public class ServiceAuthorizationPanelViewModelBase : ExtendedViewModelBase
+    public class ServiceAuthorizationPanelViewModelBase : ChildControlViewModelBase
     {
 
     }
