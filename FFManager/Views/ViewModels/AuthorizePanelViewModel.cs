@@ -69,7 +69,8 @@ namespace FFManager.Views.ViewModels
             get => this.GetBindingValue<bool>(nameof(this.ServiceListPanelIsShow));
             private set => this.SetBindingValue(nameof(this.ServiceListPanelIsShow), value);
         }
-
+        
+        /*
         /// <summary>
         /// サービス認証用の親パネル部を表示するかどうかを示す値を取得します．
         /// </summary>
@@ -86,6 +87,16 @@ namespace FFManager.Views.ViewModels
         {
             private get => this.GetBindingValue<UIElementCollection>(nameof(this.AuthorizeParentPanelChildren));
             set => this.SetBindingValue(nameof(this.AuthorizeParentPanelChildren), value);
+        }
+        */
+
+        /// <summary>
+        /// AuthorizePanel (ChildBindableControl) で表示する対象のビューモデルを取得または設定します。
+        /// </summary>
+        public IChildControlViewModel AuthorizeChild
+        {
+            get => this.GetBindingValue<IChildControlViewModel>(nameof(this.AuthorizeChild));
+            set => this.SetBindingValue(nameof(this.AuthorizeChild), value);
         }
 
 
@@ -218,7 +229,7 @@ namespace FFManager.Views.ViewModels
         {
             // 一旦全部非表示にする
             this.ServiceListPanelIsShow = false;
-            this.AuthorizeParentPanelIsShow = false;
+            this.AuthorizeChild = null;
 
             switch (this.State)
             {
@@ -226,8 +237,11 @@ namespace FFManager.Views.ViewModels
                     this.ServiceListPanelIsShow = true;
                     break;
                 case AuthorizePanelState.ServiceLogin:
+                    /*
                     this.AuthorizeParentPanelIsShow = true;
                     this.getSelectedService().AuthorizeAsync(new AuthorizeParameter() { AuthorizeParentPanel = null });
+                    */
+                    this.AuthorizeChild = new ServiceAuthorization.TestService.ServiceLoginPanelViewModel();
                     break;
             }
         }
