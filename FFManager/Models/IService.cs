@@ -29,6 +29,7 @@ namespace FFManager.Models
             get;
         }
 
+        /*
         /// <summary>
         /// アカウントを認証を取得します。
         /// </summary>
@@ -36,5 +37,13 @@ namespace FFManager.Models
         /// <param name="parameters"></param>
         /// <remarks>このメソッドは、明示的なインターフェイスの実装により定義され、また、同名のメソッドで詳細な型が確定した適切な戻り値を返すメソッドを別途定義されることが理想です。</remarks>
         Task<IServiceAccount<IService>> AuthorizeAsync(AuthorizeParameter parameters);
+        */
+
+        /// <summary>
+        /// 認証に利用するコンテキストを取得します。
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        AuthorizeContext GetAuthorizeContext(AuthorizeParameter parameter);
     }
 }

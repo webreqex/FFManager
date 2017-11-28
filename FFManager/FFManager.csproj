@@ -66,7 +66,9 @@
     </Compile>
     <Compile Include="Controller\ControllerInitializeParameter.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Models\Elements\AuthorizeContext.cs" />
     <Compile Include="Models\Elements\AuthorizeParameter.cs" />
+    <Compile Include="Models\Elements\ViewContext.cs" />
     <Compile Include="Models\Extensions\AccountExtension.cs" />
     <Compile Include="Models\IAccount.cs" />
     <Compile Include="Models\RelationType.cs" />

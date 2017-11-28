@@ -57,11 +57,11 @@ namespace FFManager.Models.Bases
         // 限定公開メソッド
 
         /// <summary>
-        /// アカウントを認証を取得する処理を実装します。
+        /// 認証に利用するコンテキストを取得する処理を実装します。
         /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns>認証に失敗、あるいは中断した場合は、Taskの結果としてnullを返します。</returns>
-        protected abstract Task<IServiceAccount<IService>> OnAuthorizeAsync(AuthorizeParameter parameters);
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        protected abstract AuthorizeContext OnGetAuthorizeContext(AuthorizeParameter parameter);
 
 
         // 公開メソッド
@@ -69,9 +69,14 @@ namespace FFManager.Models.Bases
 
         // 公開メソッド :: 明示的なインターフェイスの実装
 
-        Task<IServiceAccount<IService>> IService.AuthorizeAsync(AuthorizeParameter parameters)
+        /// <summary>
+        /// 認証に利用するコンテキストを取得します。
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        AuthorizeContext IService.GetAuthorizeContext(AuthorizeParameter parameter)
         {
-            return this.OnAuthorizeAsync(parameters);
+            return this.OnGetAuthorizeContext(parameter);
         }
     }
 }
