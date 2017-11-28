@@ -54,10 +54,8 @@
         </Grid>
         -->
 
-        <lc:ChildBindableControl>
-            
-        </lc:ChildBindableControl>
-        
+        <lc:ChildBindableControl ChildControl="{Binding AuthorizeChild}"/>
+
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource ResourceKey=ModernButtonStyleKey}">

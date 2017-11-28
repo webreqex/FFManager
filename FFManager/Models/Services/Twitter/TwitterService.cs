@@ -41,7 +41,7 @@ namespace FFManager.Models.Services.Twitter
 
         // 限定公開メソッド
 
-        protected override Task<IServiceAccount<IService>> OnAuthorizeAsync(AuthorizeParameter parameters)
+        protected override AuthorizeContext OnGetAuthorizeContext(AuthorizeParameter parameter)
         {
             return null;
         }
