@@ -241,7 +241,11 @@ namespace FFManager.Views.ViewModels
                     this.AuthorizeParentPanelIsShow = true;
                     this.getSelectedService().AuthorizeAsync(new AuthorizeParameter() { AuthorizeParentPanel = null });
                     */
+                    /*
                     this.AuthorizeChild = new ServiceAuthorization.TestService.ServiceLoginPanelViewModel();
+                    */
+
+                    this.AuthorizeChild = this.getSelectedService().GetAuthorizeContext(new AuthorizeParameter()).ViewContext.AuthorizeChild;
                     break;
             }
         }

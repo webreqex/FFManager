@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using LocusCommon.Windows.ViewModels;
+
 using FFManager.Models.Bases;
 using FFManager.Models.Elements;
 
@@ -32,28 +34,31 @@ namespace FFManager.Models.Services.Tests
 
         // 限定公開メソッド
 
-        protected override Task<IServiceAccount<IService>> OnAuthorizeAsync(AuthorizeParameter parameters)
+        protected override AuthorizeContext OnGetAuthorizeContext(AuthorizeParameter parameter)
         {
-            return Task.Run(async () =>
-            {
-                return (IServiceAccount<IService>)await this.AuthorizeAsync(parameters);
-            });
+            var viewContext = new ViewContext();
+            viewContext.MaxStage = 1;
+            viewContext.AuthorizeChild = new AuthorizeChild();
+
+            var context = new AuthorizeContext(parameter, viewContext);
+            return context;
         }
 
 
         // 公開メソッド
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        public Task<ModelTestServiceAccount> AuthorizeAsync(AuthorizeParameter parameters)
+        private class AuthorizeChild : ChildControlViewModelBase
         {
-            return Task.Run(() =>
+            // 非公開フィールド
+
+            // 公開プロパティ
+
+            // コンストラクタ
+
+            public AuthorizeChild()
             {
-                return new ModelTestServiceAccount(this.clientId, "name", "id");
-            });
+                this.Target = new Views.Controls.ServiceAuthorization.TestService.ServiceLoginPanel();
+            }
         }
     }
 }
